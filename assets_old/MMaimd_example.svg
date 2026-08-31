@@ -153,7 +153,7 @@
     Whenever J(t)=i, the process increases linearly with fixed slope 1/cᵢ.
   </text>
   <text x="160" y="772" class="small">
-    At a jump from phase i, X(t-) is multiplied by pᵢ; the new phase is sampled from row i of Q.
+    At the jump time, the value of X(t-) is multiplied by pᵢ and the environment changes to one of the other states.
   </text>
   <text x="160" y="802" class="small">
     Dashed lines mark jump times; colors identify the active Markov environment.

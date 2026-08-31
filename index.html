@@ -4,10 +4,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Exit Problems for AIMD Markov-Modulated Processes</title>
+  <title>Exit Problems for Markov-Modulated Additive-Increase Multiplicative-Decrease Processes</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css" />
-  <link rel="stylesheet" href="assets/slides.css" />
+  <link rel="stylesheet" href="assets/slides.css?v=20260830" />
 </head>
 
 <body>
@@ -26,15 +26,15 @@
 
         <div class="unipd-cover-top">
           <div class="unipd-event">
-            <a href="https://sites.google.com/view/iwspa2026/home" target="_blank"
-              rel="noopener noreferrer">IWSPA2026 &dash; Badajoz (Spain)</a>
-            <span>June, 30<sup>th</sup> &dash; July, 2<sup>nd</sup> 2026</span>
+            <a href="https://www.eurandom.tue.nl/event/applied-probability-and-queues/" target="_blank"
+              rel="noopener noreferrer">Applied Probability and Queues &dash; EURANDOM</a>
+            <span>5&ndash;7 October 2026 &middot; Eindhoven</span>
           </div>
         </div>
 
         <div class="unipd-cover-main">
-          <div class="unipd-kicker">AIMD processes · Markovian environment</div>
-          <h1>Exit Problems for AIMD<br />in a Markovian Environment</h1>
+          <div class="unipd-kicker">In honour of Offer Kella</div>
+          <h1>Exit Problems for<br/>Markov-Modulated AIMD Processes</h1>
           <div class="unipd-authors">
             <strong>Bernardo D'Auria</strong> <span>University of Padova</span><br />
             Joint work with <strong class="coauthor-name">Zbigniew Palmowski</strong> <span>Wrocław University of
@@ -48,9 +48,10 @@
         </span>
         <img class="unipd-logo-bottom-right" src="assets/unipd-logo.svg" alt="Università degli Studi di Padova" />
 
-        <aside class="notes">25-minutes talk.
-          Open with the scalar AIMD picture, then state the Markov-modulated extension. Emphasize the goal:
-          matrix-valued exit transforms and a constructive method.
+        <aside class="notes">40-minute invited talk, Tuesday 6 October, on the day honoring Offer Kella.
+          Søren Asmussen speaks immediately before. Open with the scalar AIMD picture, then state the
+          Markov-modulated extension. Reserve the final third for the downward transform and reflection.
+          [Sources] EURANDOM, Applied Probability and Queues event page and tentative program, accessed 30 Aug 2026.
         </aside>
       </section>
       <section>
@@ -212,7 +213,7 @@
           </aside>
         </section>
 
-        <section>
+        <section data-visibility="hidden">
           <h2>more on Partial resetting</h2>
           <div class="cols">
             <div class="card compact">
@@ -253,7 +254,7 @@
               <span class="label">2023 AIMD scalar model</span>
               <p>The study <a class="cite-link" href="#/partial-resetting-bibliography">van der Hofstad et al.
                   (2023)</a>&dagger; looked at exit-time identities for the scalar model.</p>
-              <p>The model is specified by one triplet $(c,\lambda,p)$:</p>
+              <p>The model is specified by a triplet $(c,\lambda,p)$:</p>
               <ul>
                 <li>deterministic growth at rate $1/c$;</li>
                 <li>Poisson jumps with rate $\lambda$;</li>
@@ -274,12 +275,14 @@
                 \]</p>
               <p>The scalar transforms of the exit-times become <strong>matrix-valued</strong> transforms, indexed by
                 the starting and ending environment regime.</p>
-              <p class="eq small">\begin{align*}
-                \{J(T_n)=i\} &\implies \{J(T_{n+1})=j\} \text{ with prob. } q_{ij},\\
-                dX_t &= dt /c_i ,\ J(t)=i \qquad T_n \le t \lt T_{n+1} \\
-                X(T_n) &= p_i X(T_n-),\\
-                T_{n+1}-T_n &\sim \Exp(\lambda_i).
-                \end{align*}</p>
+              <p class="eq small">
+                \begin{align*}
+                dX_t&=dt/c_{i_n}, \qquad T_n\le t\lt T_{n+1},\\
+                X(T_{n+1})&=p_{i_n}X(T_{n+1}-),\\
+                T_{n+1}-T_n &\sim \Exp(\lambda_{i_n}).
+                \end{align*}
+                \(J(t)=i_n\), and 
+                \(\P(i_{n+1}=j\mid i_n=i)=q_{ij}\).</p>
             </div>
           </div>
           <div class="callout fragment"><strong>Note:</strong> the skip-free/first-step strategy survives, but scalar
@@ -315,7 +318,7 @@
         </section>
         -->
 
-        <section>
+        <section data-visibility="hidden">
           <h2>Markov modulated AIMD sample path</h2>
           <div class="figure-card">
             <img class="figure" src="assets/MMaimd_example.svg"
@@ -368,13 +371,12 @@
             <p class="eq">\[
               x_{n+1}=p_{i_n}\left(x_n+\frac{t_{n+1}-t_n}{c_{i_n}}\right).
               \]</p>
-            <p>The next state $i_{n+1}$ is selected randomly according to the distribution given by the $i$-th row of
-              <thead></thead> transition matrix $\mQ$.
-            </p>
+            <p>The next state $i_{n+1}$ is selected randomly according to the distribution given by the
+              $i_n$-th row of the transition matrix $\mQ$.</p>
             <p>Hence a first-step equation mixes:</p>
             <ul>
               <li>state-dependent linear growth $t\mapsto x+t/c_i$;</li>
-              <li>state-dependent rescaling $x\mapsto x/p_i$;</li>
+              <li>state-dependent multiplicative jump $x\mapsto p_i x$;</li>
               <li>multiplication by selectors $\mE_i$;</li>
               <li>matrix products with $\mQ$.</li>
             </ul>
@@ -491,19 +493,23 @@
           \tmU(s)=\mA(s)\mB+\mA(s)\sum_{i=1}^m \mE_i \mQ\,\tmU(s/p_i).
           \]
         </div>
-        <p>Iterating this equation yields</p>
+        <p>Iterating this equation yields the phase-word Green operator</p>
         <div class="method-box math-small">
           \[
-          \boxed{\;\tmU(s)=\mA(s)\mD(s)\mB\;}
+          \mK_\alpha(s)=\mE_{i_1}\mQ\mA(s/p_{i_1})\cdots
+          \mE_{i_n}\mQ\mA(s/p_\alpha),
+          \qquad p_\alpha=p_{i_1}\cdots p_{i_n},
           \]
           \[
-          \mD(s)=\mId+\sum_{n\ge1}\sum_{i_1,\ldots,i_n}
-          \mE_{i_1}\mQ\mA(s/p_{i_1})\cdots
-          \mE_{i_n}\mQ\mA\!\left(\frac{s}{p_{i_1}\cdots p_{i_n}}\right).
+          (\calD F)(s)=F(s)+\sum_{n\ge1}\sum_{|\alpha|=n}
+          \mK_\alpha(s)F(s/p_\alpha),
+          \]
+          \[
+          \boxed{\;\tmU(s)=\mA(s)(\calD\mId)(s)\mB\;}
           \]
         </div>
-        <p class="small muted">The series converges because repeated multiplications by $p_i\lt 1$ push the residuals
-          quickly towards $0$.</p>
+        <p class="small muted">The word series converges super-geometrically: $s/p_\alpha\to+\infty$, while the
+          successive $\mA(s/p_\alpha)$ factors acquire the products $p_\alpha$.</p>
         <aside class="notes">
           The important idea is not to display every index but to tell the story: each word i_1...i_n is a possible
           sequence of post-jump regimes.
@@ -521,14 +527,13 @@
             <p class="eq small">\[
               Z^\up(w;0,x)=
               \left(\sum_{k=0}^{\infty}
-              \frac{(x/(w+\lambda))^k}{k!}\,
-              {\color{blue}(\lambda/(w+\lambda);p)_k}
-              \right)^{-1}.\]</p>
+              \frac{(x/(w+\lambda))^k}{k!\,{\color{blue}(\lambda/(w+\lambda);p)_k}}
+              \right)^{-1},\qquad (c=1).\]</p>
           </div>
           <div class="card compact">
             <span class="label">Markov-modulated AIMD</span>
             <p>Division is replaced by matrix inversion.</p>
-            <p>A scalar $q$-series is replaced by the non-commutative series $\mD(s)$.</p>
+            <p>A scalar $q$-series is replaced by the non-commutative phase-word operator $\calD$.</p>
             <p>The matrices $\mE_i\mQ$ trace the regimes selected at each jump.</p>
           </div>
         </div>
@@ -542,35 +547,103 @@
       </section>
 
       <section>
-        <h2>Downward one-sided exit:
-          <span class="math small">$\mZ(x\down b) = \E_x\!\big[\e^{-w\tau_b^\down};\,J(\tau_b^\down)\big]$</span>
-        </h2>
-        <p>For $x>b$, first-step analysis gives a renewal equation in the opposite direction:</p>
-        <div class="theorem-box math-small">
-          \[
-          Z_{ij}(w,x \down b)=
-          \sum_k q_{ik}\gamma_i\e^{z_ix}
-          \int_{p_ix}^{\infty} Z_{kj}(w,y \down b)\,
-          \e^{-(z_i/p_i)y}\,dy,
-          \qquad \mZ(x \down b)=\mId\;\text{ for }x\le b.
-          \]
-        </div>
-        <p>With $\tmZ(s)=\int_0^\infty\e^{-sx} \mZ(x \down b)\,dx$,</p>
-        <div class="method-box math-small">
-          \begin{align*}
-          \tmZ(s) &=\sum_h \mA(s) \mE_h \mQ
-          \left(\tmZ(s/p_h)-\tmZ(z_h/p_h)\right). \\
-          \tmZ(s)&=\mA(s)\mD(s)\mH,
-          \qquad
-          \mH=-\sum_h \mE_h\mQ\tmZ(z_h/p_h).
-          \end{align*}
-        </div>
-        <p class="small muted">The matrix $\mH$ is then recovered by solving a system of equations at the limiting
-          arguments obtained for $s \to z_h/p_h$, $h\in E$.</p>
-        <aside class="notes">
-          Present H as the finite boundary/normalization matrix. Do not spend time on its closure unless asked; the main
-          point is that the same D appears.
-        </aside>
+        <section>
+          <h2>Downward one-sided exit</h2>
+          <p>For $x\le b$, $\mZ(x\down b)=\mId$. For $x>b$, first-step conditioning gives</p>
+          <div class="theorem-box math-small">
+            \[
+            \vec e_i\mZ(x\down b)=\gamma_i\e^{z_ix}
+            \int_{p_ix}^{\infty}\vec e_i\mQ\mZ(y\down b)\,
+            \e^{-(z_i/p_i)y}\,dy.
+            \]
+          </div>
+          <div class="method-box compact">
+            <p>Introduce the spatial Laplace transform</p>
+            <p class="eq">\[
+              \boxed{\;\widetilde{\mZ}_b(s)=\int_b^\infty \e^{-sx}\mZ(x\down b)\,dx\;}
+            \]</p>
+            <p>Reversing the integrals separates the already-known part $y\in[p_i b,b]$ and produces an explicit boundary term.</p>
+          </div>
+          <aside class="notes">
+            Start from the first-step equation and introduce the transform directly. The interval below b is known because
+            Z(y down b)=I there; after reversing the integrals it becomes the explicit forcing term.
+            [Source] D'Auria and Palmowski, current version, Section 4 and Proposition 4.1.
+          </aside>
+        </section>
+
+        <section>
+          <h2>Green representation of the downward transform</h2>
+          <div class="theorem-box math-small compact">
+            <p>For the known diagonal matrix $\mR_b(s)=\diag(R_i(s;b))$, set</p>
+            \[
+            \mC_b(s)=\mR_b(s)\mQ+\e^{-bs}\mH_b,
+            \qquad
+            \mH_b=-\sum_{i=1}^m \e^{z_i b}\mE_i\mQ\widetilde{\mZ}_b(z_i/p_i).
+            \]
+            <p class="eq math-xsmall">\[
+            R_i(s;b)=\frac{p_i}{s}(\e^{-sb}-\e^{-sb/p_i})
+            -\frac{p_i}{z_i}\e^{(z_i-s)b}(\e^{-z_i b}-\e^{-z_i b/p_i}).
+            \]</p>
+          </div>
+          <div class="cols-60-40 green-layout">
+            <div class="method-box math-small compact">
+              <p>The phase-word Green operator is</p>
+              \[
+              (\calD F)(s)=F(s)+\sum_{n\ge1}\sum_{|\alpha|=n}
+              \mK_\alpha(s)F(s/p_\alpha),
+              \]
+              <p>hence</p>
+              \[
+              \boxed{\;\widetilde{\mZ}_b(s)=\mA(s)(\calD\mC_b)(s).\;}
+              \]
+            </div>
+            <div class="definition-box compact math-small">
+              <p>The only finite-dimensional quantity entering $\mC_b$ is $\mH_b$.</p>
+              <p>Separate it from the Green iteration by writing</p>
+              \[
+              (\calD\mC_b)(s)=\boldsymbol G_b(s)+\boldsymbol M_b(s)\mH_b.
+              \]
+              <p class="small">The next slide determines $\mH_b$.</p>
+            </div>
+          </div>
+          <aside class="notes">
+            The spatial recursion is completely resolved by the same Green operator as in the upward problem.
+            What remains is finite-dimensional: determine H_b from its defining special values.
+            [Source] D'Auria and Palmowski, current version, Corollary 4.2 and Proposition 4.4.
+          </aside>
+        </section>
+
+        <section>
+          <h2>Finite-dimensional closure: solving for $\mH_b$</h2>
+          <div class="definition-box">
+            <p>We can rewrite</p>
+            \[
+            \widetilde{\mZ}_b(s)=\mA(s)\boldsymbol G_b(s)+\mA(s)\boldsymbol M_b(s)\mH_b.
+            \]
+            <p>with 
+            \(\qquad \boldsymbol G_b(s)=(\calD(\mR_b\mQ))(s), \quad \) and 
+            \(\qquad \boldsymbol M_b(s)=\e^{-bs}\mId+
+            \sum_{n\ge1}\sum_{|\alpha|=n}\mK_\alpha(s)\e^{-bs/p_\alpha}\).
+            </p>
+          </div>
+          <div class="theorem-box">
+            <p>Then</p>
+            \[
+              \boxed{\;\mH_b=-(\mId+\boldsymbol{\Pi}_b)^{-1}\boldsymbol{\Gamma}_b.\;}
+            \]
+            <p>If $\mId+\boldsymbol{\Pi}_b$ is nonsingular, and where</p>
+            \[
+            \boldsymbol{\Gamma}_b=\sum_{i=1}^m \e^{z_i b}\mE_i\mQ\mA(z_i/p_i)\boldsymbol G_b(z_i/p_i),
+            \qquad
+            \boldsymbol{\Pi}_b=\sum_{i=1}^m \e^{z_i b}\mE_i\mQ\mA(z_i/p_i)\boldsymbol M_b(z_i/p_i).
+            \]
+          </div>
+          <aside class="notes">
+            This is Proposition 4.4. At resonant special arguments, take the finite limit in the original transform identity
+            before separating the apparently singular factors. The probabilistic downward transform itself remains unique.
+            [Source] D'Auria and Palmowski, current version, Proposition 4.4 and Remark 4.5.
+          </aside>
+        </section>
       </section>
 
       <section>
@@ -582,93 +655,58 @@
           <p>Let $\mL(x\!\up_b^a)$ denote the transform of the upward exit time before downward exit. <br> We use a
             constructive recursion to compute it.</p>
           <div class="theorem-box math-small">
-            <p>Assuming $\mL(y\up_b^a)$ known for all $y\lt a$, with $\rho\lt\min_i p_i$, <br />
-              then $\mL(x\up_b^{a/\rho})$ is
-              obtained for $x=a$ as</p>
+            <p>Put $\bar p=\max_i p_i$. Assuming $\mL(y\up_b^a)$ is known for $y<a$, define for
+              $a\le x<a/\bar p$</p>
             \[
-            \mL(a\up_b^{a/\rho})=(I-\mH(a))^{-1}\mExp(-(a/\rho-a)\vecz)\mL(a\up_b^a),
+            P_{ij}(x)=\gamma_i\e^{z_i x}
+            \int_{p_i x}^{p_i a/\bar p}\sum_h q_{ih}L_{hj}(w;y\up_b^a)
+            \e^{-(z_i/p_i)y}\,dy.
             \]
-            <p>and for $x \lt a/\rho$ as</p>
+            <p>Then</p>
             \[
-            \mL(x\up_b^{a/\rho})=\mExp(-(a/\rho-x)\vecz)+\mH(x)\mL(a\up_b^{a/\rho}).
+            \mL(x\up_b^{a/\bar p})=\mExp(-(a/\bar p-x)\vecz)
+            +\mP(x)\mL(a\up_b^{a/\bar p}),
+            \]
+            \[
+            \boxed{\;\mL(a\up_b^{a/\bar p})=(\mId-\mP(a))^{-1}
+            \mExp(-(a/\bar p-a)\vecz).\;}
             \]
           </div>
-          <p class="eq math-xsmall">The matrix $\mH(x)$ with components
-            \(H_{ij}(x)=\gamma_i\e^{z_ix/p_i}
-            \int_{p_ix}^{p_i a/\rho}\sum_h q_{ih}L_{hj}(w,y\up_b^a)\e^{-(z_i/p_i)y}\,dy
-            \) can be explicitly computed.</p>
+          <p class="eq math-xsmall">Moreover $\lVert\mP(a)\rVert<1$, so the inverse exists by the Neumann series.
+            Repeating $a\mapsto a/\bar p$ gives the full constructive continuation.</p>
           <aside class="notes">
-            Explain that rho is a step-size parameter, not the vector p. It is selected to ensure every post-jump level
-            falls into a region already computed.
+            This is the current-paper continuation theorem. The key point is that every jump before reaching
+            $a/\bar p$ lands below $a$, where the old two-sided transform is already known.
+            [Source] D'Auria and Palmowski, current version, Theorem 5.3.
           </aside>
         </section>
 
-        <section>
-          <h2>Two-sided upward exit &mdash; starting interval \([b,b/p)\)</h2>
+        <section data-visibility="hidden">
+          <h2>Two-sided upward exit &mdash; initial strip</h2>
           <div class="theorem-box math-small">
-            <p> We have that, for any \(x\in[b,b/p)\), where \(p=\max_i p_i\),
-              the following identity holds:
-              \begin{align*}
-              %\mL\!\left(b\!\up_b^x\right) &= \mExp\!\bigl(-(x-b)\vecz\bigr),\\
-              \mL\!\left(x\!\up_b^{b/p}\right)& =\mExp\!\bigl(-(b/p-x)\vecp \vecgamma\bigr).
-              \end{align*}
-            </p>
+            <p>Let $\bar p=\max_i p_i$. If $b&gt;0$ and $b&lt;a\le b/\bar p$, then for every $b&lt;x\le a$,</p>
+            \[
+              \boxed{\;\mL(x\up_b^a)=\mExp(-(a-x)\vecz).\;}
+            \]
+            <p>If $b=0$, then $\tau_0^\down=\infty$ a.s. from every positive starting level, so
+              $\mL(x\up_0^a)=\mZ(x\up a)$.</p>
           </div>
           <div class="proof-box math-xsmall">
-            <!--
-            <p>
-              <strong>Proof.</strong>
-              Assume that \((X(0),J(0))=(b,i)\). Since \(xp_i&lt;b\), we have
-              \[
-              \{\tau_{\uparrow x}&lt;\tau_{\downarrow b}\}
-              =
-              \{c_iT&gt;(x-b)\}.
-              \]
-              Therefore,
-              \[
-              L_{ij}\!\left(b\up_b^x\right)
-              =
-              \delta_{ij}\P_{x,i}(\tau_{\uparrow x}&lt;\tau_{\downarrow b})
-              =
-              \delta_{ij}\P_{x,i}(c_iT\ge x-b)
-              =
-              \delta_{ij}\exp\!\left\{-\frac{z_i}{p_i}(x-b)\right\}.
-              \]
-            </p>
-            -->
-
-            <p>
-              <strong>Proof.</strong><br />
-              Assume that \((X(0),J(0))=(x,i)\), then since \(y p_i&lt;b\), for all \(y\in[x,b/p)\), we have
-              \[
-              \{\tau_{\uparrow b/p}&lt;\tau_{\downarrow b}\}
-              =
-              \{T\ge c_i(b/p-x)\},
-              \]
-              and
-              \[
-              L_{ij}\!\left(x\up_b^{b/p}\right)
-              =
-              \delta_{ij}\P_{x,i}(\tau_{\uparrow {b/p}}&lt;\tau_{\downarrow b})
-              =
-              \delta_{ij}\P_{x,i}(T\ge c_i(b/p-x))
-              =
-              \delta_{ij}\exp\!\left\{- \lambda_i c_i(b/p-x)\right\}.
-              \]
-            </p>
+            <p><strong>Reason.</strong> Before reaching $a$, every jump from phase $i$ lands at or below
+              $p_i a\le\bar p a\le b$. Thus success is exactly the event of no jump during the deterministic climb
+              from $x$ to $a$. In phase $i$ this contributes
+              $\exp\{-c_i(\lambda_i+w)(a-x)\}=\exp\{-z_i(a-x)\}$.</p>
           </div>
-
           <aside class="notes">
-            This proposition provides the initialization step for the upward-exit recursion.
-            On the interval \([b,b/p)\), no regime switch can occur before exiting,
-            so the transform reduces to a simple exponential survival probability.
+            This is the seed used in the current paper before iterating the upper continuation theorem.
+            [Source] D'Auria and Palmowski, current version, Proposition 5.1.
           </aside>
         </section>
 
-        <section>
-          <h2>First-step decomposition for the AIMD exit problem</h2>
+        <section data-visibility="hidden">
+          <h2>Recursive upper continuation: first-step picture</h2>
           <div class="figure-card">
-            <img class="figure" src="assets/Layer_proof.svg" alt="First-step decomposition for the AIMD exit problem" />
+            <img class="figure" src="assets/Layer_proof.svg" alt="First-step picture for recursive two-sided upper continuation" />
           </div>
         </section>
       </section>
@@ -697,199 +735,232 @@
       </section>
 
       <section>
-        <h2>Reflected processes at its running infimum</h2>
-        <div class="cols">
-          <div class="card compact">
-            <span class="label">2023 AIMD scalar model</span>
-            <p>They looked at the <em>upward exit time</em> for the process
-              \[ X_t^{-} = \inf_{s \le t} X_s \wedge X_0 ,\]
-              that correspond to the free process reflected at it's minimum.
-            </p>
-            <p>The used technique is to show that the processes
-              \[ e^{-w\tau_{a,b}(x)\wedge t}
-              F\bigl(w,X_{\tau_{a,b}(x)\wedge t}\up_b^a\bigr)
-              -\int_{0}^{\tau_{a,b}(x)\wedge t} \mathcal{A}^{\dagger}
-              F\bigl(w; X_s\up_b^a\bigr)\, ds \]
-              is a local martingale, where
-              \[F(w,x\up_b^a)=Z(w,x\down b)+L(w,x\up_b^a)\]
-            </p>
-          </div>
-          <div class="rows">
-            <div class="error-box compact">
-              <p>Defining a similar object for the modulated version of the reflected process,</p>
-              <p class="eq">\[
-                \mF(x\up_b^a) \approx \mZ(x\down b)+\mL(x\up_b^a)\]</p>
-              <p>does not work.</p>
-            </div>
-            <div class="method-box compact fragment">
-              <p>The natural Markov modulated extension of \(L(w,x\up_b^a)\) is
-                \[\mL(x\up_b^{\veca})\]
-                where \(\veca\) is a vector.</p>
-            </div>
-          </div>
-        </div>
-        <aside class="notes">
-          This is a bridge slide. It shows that the fixed-barrier identities are not isolated; they are the alphabet for
-          reflected problems.
-        </aside>
-      </section>
-
-      <section>
-        <h2>Working with state-dependent upper barriers</h2>
-        <div class="error-box compact">
-          <p class="eq small">In general \[
-            \tau_{\veca}^\up(0,J(0)) \not\disteq \tau_x^\up(0,J(0)) + \tau_{\veca}^\up(x,J(\tau_x^\up(0,J(0))),\]
-            that means
-            \[\mZ(0\up\veca)\not=\mZ(0\up x)\,\mZ(x\up\veca). \]</p>
-        </div>
-        <div class="method-box compact fragment">
-          <p class="eq small">What instead works is \[
-            \tau_{\veca}^\up(0,J(0)) \disteq \tau_{x\wedge\veca}^\up(0,J(0)) +
-            \tau_{\veca}^\up(x,J(\tau_{x\wedge\veca}^\up(0,J(0)))),\]
-            and
-            \[\mZ(0\up\veca) =\mZ(0\up x\wedge\veca)\,\mZ(x\up\veca). \]</p>
-        </div>
-      </section>
-
-      <section data-visibility="hidden">
-        <h2>Factorization over generated levels</h2>
-        <div class="theorem-box compact">
-          <p>For $x\le\ell$,</p>
-          <p class="eq">\[
-            \mZ(x \up \veca) = \mZ(x \up \veca\wedge\ell) \, \mZ(\ell \up \veca).
+        <section>
+          <h2>Reflection at the running minimum</h2>
+          <div class="definition-box compact">
+            <p>Start with an initial minimum $u>0$ and define</p>
+            <p class="eq">\[
+              V_t=u\wedge\inf_{0\le s\le t}X(s),\qquad
+              \widetilde Y_t=X(t)-V_t,
+              \qquad
+              \widetilde\tau_a=\inf\{t\ge0:\widetilde Y_t\ge a\}.
             \]</p>
-        </div>
-        <div class="cols">
-          <div class="card compact">
-            <span class="label">Initialization</span>
-            <p>Let $\wedge \veca=\min_i a_i$. For $x\lt\wedge \veca$,</p>
-            <p class="eq small">\[
-              \mZ(x\up \veca\wedge(\wedge \veca))=\mZ(x\up \wedge \veca),
-              \]</p>
-            <p>which is the fixed-barrier problem <br />already solved.</p>
           </div>
-          <div class="card compact">
-            <span class="label">Iteration</span>
-            <p>At each new level, solve only for the active regimes.</p>
-            <p>Inactive regimes contribute with an identity matrix.</p>
+          <div class="method-box compact">
+            <p>We work with the Markov state $(\widetilde Y_t,V_t,J_t)$.</p>
+            <p>When a downward jump creates a new minimum $v$, the reflected coordinate returns to $0$ and the continuation value is $\mH_a(v)$.</p>
           </div>
-        </div>
-        <aside class="notes">
-          This is the same conceptual logic as the scalar two-sided recursion, but now levels are generated by the
-          vector barrier.
-        </aside>
-      </section>
+          <aside class="notes">
+            V is non-increasing and changes only when a downward AIMD jump creates a strict new minimum. This is the state used in the restart construction and in the martingale proof.
+            [Source] D'Auria and Palmowski, current version, Section 6.
+          </aside>
+        </section>
 
-      <section data-visibility="hidden">
-        <h2>Extension step for modulated barriers</h2>
-        <p>Assume $\mZ(y\up \veca\wedge\ell)$ is known for $y\lt\ell$. Choose $\rho$ so that $p_i x\lt\ell$ for
-          $x\in[\ell,\ell/\rho)$.</p>
-        <div class="theorem-box math-small">
-          \[
-          \mZ(\ell\up \veca\wedge(\ell/\rho))=
-          (\mId-\mE_k \mH(\ell))^{-1}\left[\mId+\mE_k\left(\mExp(-(
-          \ell/\rho-\ell)\vecz)-\mId\right)\right],
-          \]
-          \[
-          \mZ(x\up \veca\wedge(\ell/\rho))=
-          \mE_k\mExp(-(
-          \ell/\rho-x)\vecz)+\mH(x)\mZ(\ell\up \veca\wedge(\ell/\rho))+(\mId-\mE_k).
-          \]
-        </div>
-        <p class="eq math-xsmall">\[
-          H_{ij}(x)=\gamma_i\e^{z_ix/p_i}\int_{p_ix}^{p_i\ell/\rho}
-          \sum_h q_{ih} Z_{hj}(w,y\up \veca\wedge\ell)\e^{-(z_i/p_i)y}\,dy.
+        <section>
+          <h2>Kella's martingale lineage</h2>
+          <div class="martingale-timeline">
+            <div class="milestone">
+              <span class="year">1992</span>
+              <h3>Kella&ndash;Whitt</h3>
+              <p>L&eacute;vy input plus a bounded-variation process: a reusable martingale for storage and reflection.</p>
+            </div>
+            <div class="milestone">
+              <span class="year">2000</span>
+              <h3>Asmussen&ndash;Kella</h3>
+              <p>The construction becomes multidimensional for Markov additive processes and reflecting barriers.</p>
+            </div>
+            <div class="milestone">
+              <span class="year">2017</span>
+              <h3>Kella&ndash;Yor</h3>
+              <p>Dynkin and Lebesgue&ndash;Stieltjes are unified for $f(X,V)$ with $V$ of finite variation.</p>
+            </div>
+            <div class="milestone current">
+              <span class="year">AIMD</span>
+              <h3>Here</h3>
+              <p>$V$ is the running minimum and $f$ is matrix-valued; minimum updates are handled by restart.</p>
+            </div>
+          </div>
+          <div class="callout small"><strong>Offer Kella's martingale line:</strong> Kella&ndash;Whitt for reflection,
+            Asmussen&ndash;Kella for the Markov-additive extension, and Kella&ndash;Yor for a Markov coordinate coupled to
+            finite variation. Our AIMD proof is a direct compensated-jump specialization of the last viewpoint.</div>
+          <aside class="notes">
+            Søren has just discussed MAPs and the extension of the Kella-Whitt martingale. This slide makes the
+            historical hand-off explicit. Be precise orally: Asmussen-Kella is part of the lineage and motivation;
+            the proof in the current paper is the finite-activity compensated-jump specialization of Kella-Yor.
+            [Sources] Kella and Whitt, J. Appl. Probab. 29 (1992), 396-403; Asmussen and Kella,
+            Adv. Appl. Probab. 32 (2000), 376-393; Kella and Yor, J. Appl. Probab. 54 (2017), 252-266.
+          </aside>
+        </section>
+
+        <section>
+          <h2>Restart equation at a strict minimum</h2>
+          <p>At a current minimum $v$, let</p>
+          <p class="eq">\[
+            \rho_v=\inf\{t>0:X(t)\lt v\}.
           \]</p>
-        <aside class="notes">
-          This is the most technical slide. Say it slowly: known lower region, jump lands there, integrate known
-          transform, solve a finite linear system at the boundary.
-        </aside>
-      </section>
+          <div class="cols restart-cols">
+            <div class="theorem-box compact math-small">
+              <span class="label">Successful excursion</span>
+              \[
+              (S_a)_{ij}(v)=\E_{v,i}\!\left[\e^{-w\tau_{v+a}^\up};
+              \tau_{v+a}^\up<\rho_v,\,J(\tau_{v+a}^\up)=j\right].
+              \]
+            </div>
+            <div class="method-box compact math-small">
+              <span class="label">Restart operator</span>
+              \[
+              (\mathcal{T}_a G)_{ij}(v)=\E_{v,i}\!\left[\e^{-w\rho_v}
+              G_{J(\rho_v),j}(X(\rho_v));\,\rho_v<\tau_{v+a}^\up\right].
+              \]
+            </div>
+          </div>
+          <div class="definition-box compact restart-equation">
+            <p>The continuation matrix at the diagonal is the unique bounded solution</p>
+            <p class="eq">\[
+              \boxed{\;\mH_a=\mS_a+\mathcal{T}_a\mH_a,\qquad \mH_a=\sum_{n\ge0}\mathcal{T}_a^n\mS_a.\;}
+            \]</p>
+            <p class="small">Indeed $\lVert\mathcal{T}_a\rVert\le
+              \max_i\frac{\lambda_i}{w+\lambda_i}
+              (1-\e^{-(w+\lambda_i)c_i a})<1$.</p>
+          </div>
+          <aside class="notes">
+            Each $\mathcal{T}_a^n\mS_a$ term means exactly n strict minimum updates before a successful excursion of height a.
+            The contraction gives a computable Picard iteration with a geometric error bound.
+            [Source] D'Auria and Palmowski, current version, Lemma 6.1 and Theorem 6.2.
+          </aside>
+        </section>
 
-      <!--
-      <section>
-        <h2>Computational recipe</h2>
-        <ol class="compact">
-          <li>Compute the fixed-barrier upward scale matrix $\mZ(x\up \ell)$ for $\ell=\wedge \veca$.</li>
-          <li>Order the generated levels $\ell_k$.</li>
-          <li>On each interval, choose a step $\rho$ so every post-jump value lies in the known region.</li>
-          <li>Evaluate the matrix integral $H(x)$ from already-computed transforms.</li>
-          <li>Solve one $m\times m$ linear system at the left endpoint and propagate by the explicit formula.</li>
-        </ol>
-        <aside class="notes">
-          The small joke at the end can be used or skipped. The point is that the method is first-step and transparent.
-        </aside>
-      </section>
-      -->
+        <section>
+          <h2>Harmonic continuation between minimum updates</h2>
+          <div class="theorem-box">
+            <p>For $v\le x\le v+a$, define</p>
+            \[
+            \begin{aligned}
+            (F_a)_{ij}(w;x,v)
+            &=\E_{x,i}\!\left[\e^{-w\tau_{v+a}^\up};
+              \tau_{v+a}^\up<\rho_v,\,J(\tau_{v+a}^\up)=j\right]\\
+            &\quad+\E_{x,i}\!\left[\e^{-w\rho_v}
+              (H_a)_{J(\rho_v),j}(X(\rho_v));\,\rho_v<\tau_{v+a}^\up\right].
+            \end{aligned}
+            \]
+          </div>
+          <div class="cols-60-40 harmonic-layout">
+            <div class="method-box compact">
+              <p class="eq">\[
+                \mF_a(w;v,v)=\mH_a(v),\qquad \mF_a(w;v+a,v)=\mId.
+              \]</p>
+              <p>Extend:<br/>$\mF_a(x,v)=\begin{cases}\mH_a(x) & \text{for } 0&lt;x&lt;v, \\ \mId & \text{for } x&gt;v+a. \end{cases}$</p>
+            </div>
+            <div class="compact">
+              <p>First-step conditioning gives</p>
+              <p class="eq">\[
+                \mathcal A^\dagger \mF_a(\cdot,v)(x)=0,
+                \qquad v\lt x\lt v+a.
+              \]</p>
+              <p class="small muted">The lower branch automatically selects the new-minimum value after an overshoot.</p>
+            </div>
+          </div>
+          <aside class="notes">
+            The landing level cannot be integrated out. If p_i x falls below v, the extension returns $H_a(p_i x)$,
+            exactly the restart value at the new minimum.
+            [Source] D'Auria and Palmowski, current version, Proposition 6.3.
+          </aside>
+        </section>
 
-      <!--
-      <section>
-        <h2>What is gained?</h2>
-        <table class="table-mini">
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th>Scalar AIMD</th>
-              <th>Markov-modulated AIMD</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Growth</td>
-              <td>single slope</td>
-              <td>state-dependent slope $1/c_i$</td>
-            </tr>
-            <tr>
-              <td>Jump clock</td>
-              <td>Poisson rate $\lambda$</td>
-              <td>Markov-modulated rate $\lambda_i$</td>
-            </tr>
-            <tr>
-              <td>Decrease</td>
-              <td>fixed factor $p$</td>
-              <td>factor $p_i$ selected by the current regime</td>
-            </tr>
-            <tr>
-              <td>Transforms</td>
-              <td>scalar scale functions</td>
-              <td>matrix scale functions joint with exit state</td>
-            </tr>
-            <tr>
-              <td>Recursions</td>
-              <td>commutative $q$-series</td>
-              <td>non-commutative products indexed by regime words</td>
-            </tr>
-            <tr>
-              <td>Barriers</td>
-              <td>fixed levels</td>
-              <td>fixed levels and regime-dependent thresholds</td>
-            </tr>
-          </tbody>
-        </table>
-        <aside class="notes">
-          This is a synthesis slide for the audience. It also helps in case time is short.
-        </aside>
+        <section>
+          <h2>Compensated-jump martingale</h2>
+          <div class="theorem-box compact">
+            <p>Stopped at $\widetilde\tau_a$,</p>
+            <p class="eq">\[
+              \boxed{\;M_t=\e^{-w(t\wedge\widetilde\tau_a)}
+              \vec e_{J(t\wedge\widetilde\tau_a)}
+              \mF_a\!\left(X(t\wedge\widetilde\tau_a),V_{t\wedge\widetilde\tau_a}\right)\;}
+            \]</p>
+            <p>is a bounded martingale.</p>
+          </div>
+          <div class="callout math-xsmall martingale-drift">
+            For a column $f_i=(F_a)_{ij}$, the predictable jump drift is
+            $\displaystyle \lambda_i\!\left[\sum_k q_{ik}f_k(p_i x,\min\{v,p_i x\})-f_i(x,v)\right]$.
+          </div>
+          <div class="three-cols proof-beats">
+            <div class="compact">
+              <span class="label">Between jumps</span>
+              <p>$V$ is fixed. The deterministic drift, discount drift and the jump compensator cancel by
+                $\mathcal A^\dagger\mF_a=0$.</p>
+            </div>
+            <div class="compact">
+              <span class="label">New minimum</span>
+              <p>If $y=p_i x&lt;v$, the post-jump state is $(y,y)$ and the extension gives
+                $\mF_a(y,v)=\mH_a(y)=\mF_a(y,y)$: exactly the restart value.</p>
+            </div>
+            <div class="compact">
+              <span class="label">True martingale</span>
+              <p>The compensated jump integral is a local martingale; $0\le\mF_a\mathbf1\le\mathbf1$ makes the stopped process bounded.</p>
+            </div>
+          </div>
+          <aside class="notes">
+            This proof is the finite-activity marked-jump specialization of the Kella-Yor
+            Dynkin--Lebesgue--Stieltjes viewpoint: X is the Markov coordinate and V is the finite-variation running
+            minimum. The predictable jump drift, including jumps that update V, is cancelled by the restart harmonicity.
+            [Sources] D'Auria and Palmowski, current version, Proposition 6.4 and Remark 6.5; Kella and Yor (2017).
+          </aside>
+        </section>
+
+        <section class="reflected-result-slide">
+          <h2>Reflected first-passage transform</h2>
+          <div class="theorem-box compact math-small">
+            <p>For $w,a>0$, $0 \lt u \le x$, and $V_0=u$,</p>
+            <p class="eq">\[
+              \boxed{\;
+              \E_{x,i}\!\left[\e^{-w\widetilde\tau_a};\,
+              \widetilde\tau_a&lt;\infty,\,J(\widetilde\tau_a)=j\right]
+              =(F_a)_{ij}(w;x,u).\;}
+            \]</p>
+          </div>
+          <div class="cols">
+            <div class="method-box compact math-small">
+              <span class="label">Starting from the minimum</span>
+              <p class="eq">\[
+                \E_{u,i}\!\left[\e^{-w\widetilde\tau_a};\,
+                \widetilde\tau_a&lt;\infty,\,J(\widetilde\tau_a)=j\right]
+                =(H_a)_{ij}(u).
+              \]</p>
+            </div>
+            <div class="definition-box compact math-small">
+              <span class="label">Already above the reflected level</span>
+              <p><br/>If $x\ge u+a$, then $\widetilde\tau_a=0$ and the transform is $\delta_{ij}$.<br/>&nbsp;</p>
+            </div>
+          </div>
+          <div class="callout small">A downward jump cannot increase $X-V$, so passage through level $a$ is continuous from below.</div>
+          <aside class="notes">
+            At $\widetilde\tau_a$, we have $X=V+a$ and therefore $\mF_a=\mId$. Letting $t\to\infty$ in the bounded martingale gives the transform by bounded convergence.
+            [Source] D'Auria and Palmowski, current version, Theorem 6.6.
+          </aside>
+        </section>
       </section>
-      -->
 
       <section>
         <h2>Take-home points</h2>
         <div class="three-cols">
           <div class="theorem-box compact">
             <span class="label">1</span>
-            <p>Upward skip-free motion gives clean multiplicative identities also in the modulated case.</p>
+            <p>Upward and downward passage use the same regime-word Green kernel, while the downward forcing
+              retains the boundary $b$.</p>
           </div>
           <div class="method-box compact">
             <span class="label">2</span>
-            <p>First-step analysis yields matrix-functional equations with rescaling $s\mapsto s/p_i$.</p>
+            <p>Reflection is a restart problem: the continuation matrix $\mH_a(v)$ retains the absolute minimum after each overshoot at every
+              strict new minimum.</p>
           </div>
           <div class="definition-box compact">
             <span class="label">3</span>
-            <p>The scalar scale-function paradigm becomes a matrix scale-function paradigm.</p>
+            <p>The Kella&ndash;Yor martingale converts restart harmonicity into the full matrix transform of the reflected
+              first-passage time.</p>
           </div>
         </div>
         <aside class="notes">
-          Close with a balanced message. The formulas are involved, but the organizing idea is simple and robust.
+          Close by returning to the two renewal scales: words in space and restarts at minima. The martingale is the
+          bridge that turns the second construction into a first-passage identity.
         </aside>
       </section>
 
@@ -910,7 +981,13 @@
                 problems for additive-increase and multiplicative-decrease processes</em>, J. Appl. Probab. 60 (2023),
               85-105.</li>
             <li>B. D'Auria and Z. Palmowski, <em>Exit Problems for Additive-Increase and Multiplicative-Decrease
-                Markov-Modulated Processes</em>, working draft.</li>
+                Markov-Modulated Processes</em>, revised AAP short version, 2026.</li>
+            <li>O. Kella and W. Whitt, <em>Useful martingales for stochastic storage processes with L&eacute;vy input</em>,
+              J. Appl. Probab. 29 (1992), 396-403.</li>
+            <li>S. Asmussen and O. Kella, <em>A multi-dimensional martingale for Markov additive processes and its
+                applications</em>, Adv. Appl. Probab. 32 (2000), 376-393.</li>
+            <li>O. Kella and M. Yor, <em>Unifying the Dynkin and Lebesgue&ndash;Stieltjes formulae</em>, J. Appl. Probab. 54
+              (2017), 252-266.</li>
             <li>Z. Palmowski, <em>Stationary states and exit times for Levy processes with partial resetting</em>,
               Eurandom slides; exit-problem part from slide 36.</li>
           </ul>
@@ -990,7 +1067,7 @@
   <!-- Your simulator -->
 
   <script src="assets/AiMd_simulator.js"></script>
-  <script src="assets/slides.js"></script>
+  <script src="assets/slides.js?v=20260830"></script>
 </body>
 
 </html>

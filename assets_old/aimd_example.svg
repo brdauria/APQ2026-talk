@@ -105,15 +105,14 @@
 <line x1="115" y1="745" x2="180" y2="680" class="curve" stroke-width="4"/>
 <text x="200" y="695" class="text box-title" fill="#0b6623">Additive Increase</text>
 <text x="200" y="735" class="text small">Between events, the process grows</text>
-<text x="200" y="765" class="text small">linearly with constant rate 1/c.</text>
+<text x="200" y="765" class="text small">linearly with constant rate a &gt; 0.</text>
 
 <rect x="670" y="645" width="650" height="150" rx="8" fill="#fff4f7" stroke="#c58aa0"/>
 <line x1="715" y1="680" x2="715" y2="760" class="drop"/>
 <circle cx="715" cy="675" r="6" class="dot"/>
 <circle cx="715" cy="765" r="6" class="dot"/>
-<text x="760" y="687" class="text box-title blue">Multiplicative Decrease</text>
-<text x="760" y="723" class="text small">At Poisson epochs Tₖ (rate λ), the process jumps</text>
-<text x="760" y="751" class="text small">to a fraction of its current value:</text>
-<text x="760" y="779" class="text small">X(T<tspan baseline-shift="sub" font-size="70%">k</tspan>) = p X(T<tspan baseline-shift="sub" font-size="70%">k<tspan baseline-shift="super" font-size="70%">−</tspan></tspan>), 0 &lt; p &lt; 1.</text>
+<text x="760" y="695" class="text box-title blue">Multiplicative Decrease</text>
+<text x="760" y="735" class="text small">At random epochs Tₖ, the process jumps to a fraction of</text>
+<text x="760" y="765" class="text small"> its current value, that is, X(T<tspan baseline-shift="sub" font-size="70%">k</tspan>) = p<tspan baseline-shift="sub" font-size="70%">k</tspan> X(T<tspan baseline-shift="sub" font-size="70%">k<tspan baseline-shift="super" font-size="70%">−</tspan></tspan>), 0 &lt; p<tspan baseline-shift="sub" font-size="70%">k</tspan> &lt; 1. </text>
 
 </svg>

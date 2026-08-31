@@ -30,7 +30,6 @@ Reveal.initialize({
         mId: "{\\boldsymbol I}",
         mH: "{\\boldsymbol H}",
         mK: "{\\boldsymbol K}",
-        mP: "{\\boldsymbol P}",
         mQ: "{\\boldsymbol Q}",
         mR: "{\\boldsymbol R}",
         mS: "{\\boldsymbol S}",
