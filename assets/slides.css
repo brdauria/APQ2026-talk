@@ -849,5 +849,31 @@
   }
 }
 
+/* Fixed stage for algebraic "morphs" with Reveal fragments */
+.formula-stage {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 0.35em;
+  width: 100%;
+}
+
+/* First two states occupy exactly the same place */
+.formula-stage .formula-swap {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+}
+
+/* Final explanation appears underneath */
+.formula-stage .formula-after {
+  grid-column: 1;
+  grid-row: 2;
+  width: 100%;
+}
+
+.down-split {
+  margin-top: 0.15em;
+}
+
 /* Audited reflected-martingale slide */
 .martingale-drift { margin: 0.35em 0 0.45em; text-align: center; }
