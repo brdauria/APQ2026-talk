@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" role="img" aria-labelledby="title desc">
+  <title id="title">Geometric regions for the reflected AIMD construction</title>
+  <desc id="desc">The x-v plane is divided by the rays v equals x, v equals p bar x, v equals p bar squared x, and v equals p bar cubed x. The shaded regions are bounded exactly by these same rays.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#111827"/>
+    </marker>
+    <style>
+      .axis { stroke:#111827; stroke-width:3; fill:none; marker-end:url(#arrow); }
+      .ray { stroke:#111827; stroke-width:3; fill:none; }
+      .jump { stroke:#111827; stroke-width:4; fill:none; marker-end:url(#arrow); }
+      .label { font-family:Inter,Arial,sans-serif; fill:#111827; font-size:28px; }
+      .small { font-family:Inter,Arial,sans-serif; fill:#111827; font-size:25px; }
+      .region { font-family:Inter,Arial,sans-serif; fill:#111827; font-size:30px; font-weight:600; }
+    </style>
+  </defs>
+
+  <!-- Common geometry: origin O=(100,575), scale 72 px/unit, right boundary x=7.7. -->
+  <!-- Boundary points are used BOTH by the fills and by the rays. -->
+  <!-- B0: v=x; B1: v=0.6x; B2: v=0.36x; B3: v=0.216x. -->
+
+  <!-- Shaded regions -->
+  <polygon points="100,575 654.4,20.6 654.4,242.36" fill="#f3f4f6"/>
+  <polygon points="100,575 654.4,242.36 654.4,375.416" fill="#e5e7eb"/>
+  <polygon points="100,575 654.4,375.416 654.4,455.2496" fill="#d1d5db"/>
+
+  <!-- Axes -->
+  <line class="axis" x1="100" y1="575" x2="800" y2="575"/>
+  <line class="axis" x1="100" y1="575" x2="100" y2="90"/>
+  <text class="label" x="815" y="585">x</text>
+  <text class="label" x="82" y="72">v</text>
+
+  <!-- Region-boundary rays: endpoints exactly match polygon vertices -->
+  <line class="ray" x1="100" y1="575" x2="654.4" y2="20.6"/>
+  <line class="ray" x1="100" y1="575" x2="654.4" y2="242.36"/>
+  <line class="ray" x1="100" y1="575" x2="654.4" y2="375.416"/>
+  <line class="ray" x1="100" y1="575" x2="654.4" y2="455.2496"/>
+
+  <!-- Ray labels -->
+  <text class="small" x="665" y="38">v = x</text>
+  <text class="small" x="665" y="248">v = p̄x</text>
+  <text class="small" x="665" y="381">v = p̄²x</text>
+  <text class="small" x="665" y="461">v = p̄³x</text>
+
+  <!-- Region labels -->
+  <text class="region" x="575" y="186">𝒟<tspan baseline-shift="sub" font-size="20">0</tspan></text>
+  <text class="region" x="575" y="316">𝒟<tspan baseline-shift="sub" font-size="20">1</tspan></text>
+  <text class="region" x="575" y="417">𝒟<tspan baseline-shift="sub" font-size="20">2</tspan></text>
+
+  <!-- Jump map -->
+  <line class="jump" x1="565" y1="406" x2="390" y2="406"/>
+  <text class="small" x="415" y="384">x ↦ p<tspan baseline-shift="sub" font-size="18">i</tspan>x</text>
+</svg>

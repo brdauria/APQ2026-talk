@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 620" role="img" aria-labelledby="title desc">
+  <title id="title">Reflection at the running infimum: success or restart</title>
+  <desc id="desc">A schematic AIMD excursion starting from a current minimum v. One branch reaches v plus a successfully. Another downward jump creates a new minimum y and the reflected problem restarts there, with target y plus a.</desc>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4b5563"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#047857"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b45309"/>
+    </marker>
+    <style>
+      .ink { fill:#111827; }
+      .muted { fill:#4b5563; }
+      .small { font: 22px Inter, Arial, sans-serif; }
+      .label { font: 700 23px Inter, Arial, sans-serif; }
+      .math { font: italic 25px Georgia, 'Times New Roman', serif; }
+      .mathSmall { font: italic 22px Georgia, 'Times New Roman', serif; }
+      .level { stroke:#9ca3af; stroke-width:2.2; stroke-dasharray:9 8; }
+      .axis { stroke:#6b7280; stroke-width:2.4; }
+      .traj { fill:none; stroke:#111827; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; }
+      .success { fill:none; stroke:#047857; stroke-width:5.5; stroke-linecap:round; stroke-linejoin:round; }
+      .restart { fill:none; stroke:#b45309; stroke-width:5.5; stroke-linecap:round; stroke-linejoin:round; }
+      .guide { fill:none; stroke:#4b5563; stroke-width:2.2; stroke-dasharray:5 6; }
+      .nodeBlue { fill:#eff6ff; stroke:#1d4ed8; stroke-width:2.5; }
+      .nodeGreen { fill:#ecfdf5; stroke:#047857; stroke-width:2.5; }
+      .nodeOrange { fill:#fffbeb; stroke:#b45309; stroke-width:2.5; }
+    </style>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="1120" height="620" fill="white"/>
+
+  <!-- level guides -->
+  <line class="level" x1="80" y1="122" x2="1035" y2="122"/>
+  <line class="level" x1="80" y1="322" x2="1035" y2="322"/>
+  <line class="level" x1="80" y1="438" x2="1035" y2="438"/>
+  <line class="level" x1="540" y1="238" x2="1035" y2="238"/>
+
+  <text x="92" y="112" class="math ink">v+a</text>
+  <text x="92" y="312" class="math ink">v</text>
+  <text x="92" y="428" class="math ink">y</text>
+  <text x="938" y="228" class="math ink">y+a</text>
+
+  <!-- current minimum node -->
+  <circle cx="210" cy="322" r="9" fill="#1d4ed8"/>
+  <rect x="112" y="350" width="205" height="66" rx="14" class="nodeBlue"/>
+  <text x="214" y="378" text-anchor="middle" class="label ink">current minimum</text>
+  <text x="214" y="403" text-anchor="middle" class="mathSmall ink">(X, X̲)=(v,v)</text>
+
+  <!-- common first excursion -->
+  <path class="traj" d="M210 322 L335 195"/>
+  <text x="252" y="230" class="small muted" transform="rotate(-45 252 230)">upward motion</text>
+
+  <!-- branch point -->
+  <circle cx="335" cy="195" r="7" fill="#111827"/>
+
+  <!-- success branch -->
+  <path class="success" d="M335 195 L430 148 L520 122" marker-end="url(#arrowGreen)"/>
+  <rect x="415" y="42" width="240" height="64" rx="14" class="nodeGreen"/>
+  <text x="535" y="69" text-anchor="middle" class="label ink">successful excursion</text>
+  <text x="535" y="94" text-anchor="middle" class="mathSmall ink">reach v+a before a new minimum</text>
+  <path class="guide" d="M520 122 L520 106"/>
+
+  <!-- restart branch: downward jump -->
+  <path class="restart" d="M335 195 L375 438" marker-end="url(#arrowOrange)"/>
+  <text x="385" y="308" class="small" fill="#b45309">jump creates a new minimum</text>
+
+  <!-- new minimum node -->
+  <circle cx="375" cy="438" r="9" fill="#b45309"/>
+  <rect x="270" y="468" width="250" height="78" rx="14" class="nodeOrange"/>
+  <text x="395" y="497" text-anchor="middle" class="label ink">restart at y</text>
+  <text x="395" y="523" text-anchor="middle" class="mathSmall ink">(X, X̲)=(y,y),   Y=0</text>
+
+  <!-- restarted excursion -->
+  <path class="restart" d="M375 438 C520 420 610 320 690 238" marker-end="url(#arrowOrange)"/>
+  <path class="success" d="M690 238 L805 238" marker-end="url(#arrowGreen)"/>
+  <text x="560" y="376" class="small muted">same problem, new absolute level</text>
+
+  <!-- H_a(y) node -->
+  <rect x="760" y="275" width="270" height="86" rx="14" class="nodeOrange"/>
+  <text x="895" y="307" text-anchor="middle" class="label ink">continuation value</text>
+  <text x="895" y="339" text-anchor="middle" class="math ink">Hₐ(y)</text>
+  <path class="guide" d="M805 238 L850 275" marker-end="url(#arrow)"/>
+
+  <!-- visual brace / reflected height a -->
+  <line x1="1028" y1="238" x2="1028" y2="438" stroke="#1d4ed8" stroke-width="3"/>
+  <line x1="1017" y1="238" x2="1039" y2="238" stroke="#1d4ed8" stroke-width="3"/>
+  <line x1="1017" y1="438" x2="1039" y2="438" stroke="#1d4ed8" stroke-width="3"/>
+  <text x="1050" y="346" class="math ink">a</text>
+
+  <!-- bottom message -->
+  <rect x="585" y="446" width="455" height="88" rx="14" fill="#f3f4f6" stroke="#d1d5db" stroke-width="2"/>
+  <text x="812" y="478" text-anchor="middle" class="label ink">reflection resets the height,</text>
+  <text x="812" y="508" text-anchor="middle" class="label ink">not the absolute level</text>
+</svg>

@@ -59,18 +59,54 @@
 
       <!-- Optional opening story: why this problem fits Offer -->
       <section class="story-slide">
-        <h2>Optional opening story: why this problem fits Offer</h2>
-        <div class="definition-box compact">
-          <p><strong>Personal bridge.</strong> I met Offer during my EURANDOM post-doc years, then visited Jerusalem
-            around 2007. Our common language was Markov modulation: Brownian motion, L&eacute;vy processes, queues - and
-            now AIMD.</p>
+        <h2>Why this problem fits Offer</h2>
+
+        <div class="personal-timeline">
+          <div class="personal-timeline-item">
+            <span class="personal-timeline-dot"></span>
+            <div class="personal-timeline-content">
+              <span class="label">EURANDOM</span>
+              <p>I first met Offer during my post-doc years at EURANDOM.</p>
+            </div>
+          </div>
+
+          <div class="personal-timeline-item">
+            <span class="personal-timeline-dot"></span>
+            <div class="personal-timeline-content">
+              <span class="label">Jerusalem, around 2007</span>
+              <p>A visit and the beginning of a collaboration that kept bringing me back to Markov-modulated models.</p>
+            </div>
+          </div>
+
+          <div class="personal-timeline-item">
+            <span class="personal-timeline-dot"></span>
+            <div class="personal-timeline-content">
+              <span class="label">A common language</span>
+              <p>Brownian motion, L&eacute;vy processes, queues, random environments.</p>
+            </div>
+          </div>
+
+          <div class="personal-timeline-item current">
+            <span class="personal-timeline-dot"></span>
+            <div class="personal-timeline-content">
+              <span class="label">Today</span>
+              <p>One more process learning to behave in a random environment: Markov-modulated AIMD.</p>
+            </div>
+          </div>
         </div>
-        <div class="callout small">Possible line: "I chose this project for today because it is not only AIMD with
-          phases; it is another process learning to behave in a random environment - which is exactly the kind of
-          environment Offer made many of us enjoy."</div>
+
+        <div class="callout small">
+          A different model, but a probabilistic language that feels very familiar.
+        </div>
+
         <aside class="notes">
-          Optional, 45-60 seconds. Use only if the chair gives a personal tone. Keep it warm and short; do not turn the
-          talk into a biographical lecture.
+          I first met Offer during my post-doc years at EURANDOM, and later visited him in Jerusalem around 2007.
+          Over the years, a recurring common language has been Markov modulation and stochastic systems evolving in
+          random environments.
+          Brownian motion, Levy processes and queues appeared along the way.
+          Today the process is different: AIMD.
+          But it again asks what happens when simple local dynamics have to live inside a changing Markov environment.
+          That is one reason this project felt particularly appropriate for today.
         </aside>
       </section>
 
@@ -1028,7 +1064,8 @@
             <div class="method-box compact math-small">
               <span class="label">Next strip</span>
               <p>If the transform is known below $a$, then for $a\le x\lt a/\bar p$:</p>
-              <p class="eq hidden">$$ \mZ(\UD{x}{a/\bar p}{b})=\mExp(-(a/\bar p-x)\vecz)+\mP(x)\mZ(\UD{a}{a/\bar p}{b}). $$</p>
+              <p class="eq hidden">$$ \mZ(\UD{x}{a/\bar p}{b})=\mExp(-(a/\bar p-x)\vecz)+\mP(x)\mZ(\UD{a}{a/\bar p}{b}).
+                $$</p>
               <p class="eq">$$ \boxed{\mZ(\UD{a}{a/\bar p}{b})=(\mId-\mP(a))^{-1}\mExp(-(a/\bar p-a)\vecz).} $$</p>
             </div>
           </div>
@@ -1088,228 +1125,333 @@
       <section>
         <!-- Reflection at the running minimum -->
         <section>
-          <h2>Reflection at the running minimum</h2>
+          <h2>Reflection at the running infimum</h2>
+
           <div class="definition-box compact">
-            <p>Start with an initial minimum $u>0$ and define</p>
-            <p class="eq">\[
-              V_t=u\wedge\inf_{0\le s\le t}X(s),\qquad
-              \widetilde Y_t=X(t)-V_t,
-              \qquad
-              \widetilde\tau_a=\inf\{t\ge0:\widetilde Y_t\ge a\}.
-              \]</p>
+            <p>Starting with a current minimum $v>0$, define</p>
+            <p class="eq">$$ \underline X_t=v\wedge\inf_{0\le s\le t}X(s),\qquad Y_t=X(t)-\underline X_t,\qquad
+              \tau_a=\inf\{t\ge0:Y_t\ge a\}. $$</p>
           </div>
-          <div class="method-box compact">
-            <p>We work with the Markov state $(\widetilde Y_t,V_t,J_t)$.</p>
-            <p>When a downward jump creates a new minimum $v$, the reflected coordinate returns to $0$ and the
-              continuation value is $\mH_a(v)$.</p>
+
+          <div class="cols">
+            <div class="method-box compact">
+              <span class="label">The state we must remember</span>
+              <p>The reflected height $Y_t$ alone is not Markovian.</p>
+              <p>We retain the augmented state</p>
+              <p class="eq">$$ (X_t,\underline X_t,J_t). $$</p>
+              <p>If a jump creates a new minimum $y$, then</p>
+              <p class="eq">$$ (X_t,\underline X_t)=(y,y),\qquad Y_t=0. $$</p>
+            </div>
+
+            <div class="theorem-box compact math-small">
+              <span class="label">Starting from the minimum</span>
+              <p>Define the matrix</p>
+              <p class="eq">$$ (\mH_a(v))_{ij}=\E_{(v,v),i}\!\left[\e^{-w\tau_a};\,\tau_a\lt\infty,\,J(\tau_a)=j\right].
+                $$</p>
+              <p>$\mH_a(v)$ is the continuation value after a jump creates the new minimum $v$.</p>
+            </div>
           </div>
+
+          <div class="callout small">
+            Reflection resets the height to zero, but it does not erase the absolute level of the new minimum.
+          </div>
+
           <aside class="notes">
-            V is non-increasing and changes only when a downward AIMD jump creates a strict new minimum. This is the
-            state used in the restart construction and in the martingale proof.
-            [Source] D'Auria and Palmowski, arXiv:2609.36269, Section 6.
+            We now turn to reflection at the running infimum.
+            I want to keep the notation as close as possible to the paper.
+            The running minimum is underline X, and the reflected process is Y equal to X minus underline X.
+            We are interested in the first time Y reaches the fixed height a.
+            The important point is that Y alone does not contain enough information to restart the process.
+            Suppose a downward jump creates a new minimum y.
+            The reflected height becomes zero, but the future dynamics still depend on the absolute level y and on the
+            new regime.
+            This is why the natural Markov state is X, underline X and J.
+            Starting exactly from a current minimum v, we collect the reflected first-passage transforms in the matrix
+            H_a of v.
+            This matrix will be the object that gets restarted whenever a new minimum is created.
           </aside>
         </section>
 
-        <!-- Kella's martingale lineage -->
+        <!-- Reflection: success or restart -->
         <section>
-          <h2>Kella's martingale lineage</h2>
-          <div class="martingale-timeline">
-            <div class="milestone">
-              <span class="year">1992</span>
-              <h3>Kella&ndash;Whitt</h3>
-              <p>L&eacute;vy input plus a bounded-variation process: a reusable martingale for storage and reflection.
-              </p>
+          <h2>Reflection: success or restart</h2>
+
+          <div class="cols-60-40">
+            <div class="figure-card">
+              <div class="figure-card">
+                <img class="figure" src="assets/reflection_X_min_Y.svg"
+                  alt="AIMD process, running minimum and reflected process" />
+              </div>
             </div>
-            <div class="milestone">
-              <span class="year">2000</span>
-              <h3>Asmussen&ndash;Kella</h3>
-              <p>The construction becomes multidimensional for Markov additive processes and reflecting barriers.</p>
-            </div>
-            <div class="milestone">
-              <span class="year">2017</span>
-              <h3>Kella&ndash;Yor</h3>
-              <p>Dynkin and Lebesgue&ndash;Stieltjes are unified for $f(X,V)$ with $V$ of finite variation.</p>
-            </div>
-            <div class="milestone current">
-              <span class="year">AIMD</span>
-              <h3>Here</h3>
-              <p>$V$ is the running minimum and $f$ is matrix-valued; minimum updates are handled by restart.</p>
+
+            <div class="compact">
+              <div class="theorem-box compact">
+                <span class="label">No new minimum</span>
+                <p>Reach height $a$ above the current minimum $v$:</p>
+                <p class="eq small">$$ \mZ\!\left(\UD{v^+}{v+a}{v}\right). $$</p>
+              </div>
+
+              <div class="method-box compact">
+                <span class="label">New minimum</span>
+                <p>A jump creates $y\lt v$, so the reflected process restarts at $0$ with continuation</p>
+                <p class="eq small">$$ \mH_a(y). $$</p>
+              </div>
             </div>
           </div>
-          <div class="callout small"><strong>Offer Kella's martingale line:</strong> Kella&ndash;Whitt for reflection,
-            Asmussen&ndash;Kella for Markov-additive structure, and Kella&ndash;Yor for a Markov coordinate coupled to
-            finite variation. In the arXiv version, the reflected AIMD identity is closed by a Doob martingale; this
-            keeps the Kella martingale intuition while avoiding a differentiability caveat in the scalar
-            Dynkin&ndash;Lebesgue&ndash;Stieltjes route.</div>
+
+          <div class="callout hidden">
+            <p class="eq small">$$ \boxed{\mH_a=\text{successful excursion}+\text{restart at the new minimum}.} $$</p>
+          </div>
+
+          <p class="math-xsmall muted">In the paper this is written as $\mH_a=\cT_a\mH_a$, where
+            $(\cT_a\mG)(v)=\mZ(\UD{v^+}{v+a}{v})+(\cV_a\mG)(v)$.</p>
+
           <aside class="notes">
-            This is the human bridge to Offer: storage, MAPs, finite variation and martingales. Be precise orally:
-            Kella's work motivates the martingale viewpoint; the current proof identifies the stopped process as a
-            Doob martingale of the reflected first-passage terminal variable.
-            [Sources] Kella and Whitt, J. Appl. Probab. 29 (1992), 396-403; Asmussen and Kella,
-            Adv. Appl. Probab. 32 (2000), 376-393; Kella and Yor, J. Appl. Probab. 54 (2017), 252-266;
-            D'Auria and Palmowski, arXiv:2609.36269, Proposition 6.5 and Remark 6.6.
+            This picture contains the whole mechanism.
+            Start exactly from the current minimum v.
+            There are two possibilities before the reflected height reaches a.
+            In the first one, the process reaches v plus a before ever going below v.
+            This gives the two-sided upward exit matrix shown on the right.
+            In the second one, a downward jump creates a new minimum y below v.
+            At that instant the reflected height is again zero.
+            But the absolute level y is retained, so the continuation is H_a of y.
+            Therefore H_a is obtained by adding a successful excursion and a restarted copy of the same problem.
+            The paper packages the restart contribution into the operator V_a and the whole right-hand side into the
+            affine map T_a.
+            The important fact is that T_a is a strict contraction.
+            Hence this restart equation has a unique solution and can be computed by Picard iteration.
           </aside>
         </section>
 
         <!-- Optional Offer bridge before reflection -->
-        <section data-visibility="hidden" class="story-slide">
-          <h2>Optional Offer bridge before reflection</h2>
-          <div class="definition-box compact">
-            <p>Reflection and martingales are the place where the talk can explicitly nod to Offer's work on storage,
-              Markov additive processes and finite-variation coordinates.</p>
+        <section>
+          <h2>Reflection: a fixed-point problem</h2>
+
+          <p>The restart mechanism gives an affine map on matrix-valued functions of the current minimum:</p>
+
+          <div class="theorem-box compact math-small">
+            <p class="eq">$$ (\cT_a\mG)(v)=\mZ\!\left(\UD{v^+}{v+a}{v}\right)+(\cV_a\mG)(v). $$</p>
           </div>
-          <div class="callout small">Possible line: "At this point the process has a running minimum, a finite-variation
-            coordinate, and a martingale waiting in the wings. In an Offer Kella session, that is not a coincidence; it
-            is a warning sign."</div>
-          <aside class="notes">Optional, 30 seconds. Use it as a transition, not as a separate theorem.</aside>
+
+          <div class="cols">
+            <div class="definition-box compact">
+              <span class="label">Reflected passage</span>
+              <p>The required matrix function is the fixed point</p>
+              <p class="eq">$$ \boxed{\mH_a=\cT_a\mH_a.} $$</p>
+            </div>
+
+            <div class="method-box compact">
+              <span class="label">Compute it by iteration</span>
+              <p>Start from $\mH_a^{(0)}=0$ and iterate</p>
+              <p class="eq">$$ \boxed{\mH_a^{(n+1)}=\cT_a\mH_a^{(n)}.} $$</p>
+            </div>
+          </div>
+
+          <div class="callout small">
+            The restart map is a strict contraction: each iteration adds one more possible minimum update.
+          </div>
+
+          <p class="math-xsmall muted">More precisely, $\|\mH_a-\mH_a^{(n)}\|_\infty\le\beta^n$, with
+            $\beta=\max_i\frac{\lambda_i}{w+\lambda_i}(1-\e^{-z_i a})\lt1$.</p>
+
+          <aside class="notes">
+            The picture from the previous slide can now be summarized mathematically.
+            Give me any candidate continuation matrix G as a function of the current minimum.
+            The map T_a adds two pieces.
+            The first is the excursion that reaches height a without creating a new minimum.
+            The second is the contribution of paths that create a new minimum and then continue using G.
+            The reflected passage matrix H_a must therefore be a fixed point of this map.
+            The useful fact is that T_a is a strict contraction.
+            So we can start from zero and apply the same restart map repeatedly.
+            After n iterations we have allowed up to n successive minimum updates.
+            The approximation error decreases geometrically.
+            This gives existence, uniqueness and an actual computational procedure in one stroke.
+          </aside>
         </section>
 
         <!-- Restart equation at a strict minimum -->
         <section>
-          <h2>Restart equation at a strict minimum</h2>
-          <p>At a current minimum $v$, let</p>
-          <p class="eq">\[
-            \rho_v=\inf\{t>0:X(t)\lt v\}.
-            \]</p>
-          <div class="cols restart-cols">
-            <div class="theorem-box compact math-small">
-              <span class="label">Successful excursion</span>
-              \[
-              (S_a)_{ij}(v)=\E_{v,i}\!\left[\e^{-w\tau_{v+a}^\up};
-              \tau_{v+a}^\up<\rho_v,\,J(\tau_{v+a}^\up)=j\right]. \] </div>
-                <div class="method-box compact math-small">
-                  <span class="label">Restart operator</span>
-                  \[
-                  (\mathcal{T}_a G)_{ij}(v)=\E_{v,i}\!\left[\e^{-w\rho_v}
-                  G_{J(\rho_v),j}(X(\rho_v));\,\rho_v<\tau_{v+a}^\up\right]. \] </div>
-                </div>
-                <div class="definition-box compact restart-equation">
-                  <p>The continuation matrix at the diagonal is the unique bounded solution</p>
-                  <p class="eq">\[
-                    \boxed{\;\mH_a=\mS_a+\mathcal{T}_a\mH_a,\qquad \mH_a=\sum_{n\ge0}\mathcal{T}_a^n\mS_a.\;}
-                    \]</p>
-                  <p class="small">Indeed $\lVert\mathcal{T}_a\rVert\le
-                    \max_i\frac{\lambda_i}{w+\lambda_i}
-                    (1-\e^{-(w+\lambda_i)c_i a})<1$.< /p>
-                </div>
-                <aside class="notes">
-                  Each $\mathcal{T}_a^n\mS_a$ term means exactly n strict minimum updates before a successful excursion
-                  of height a.
-                  The contraction gives a computable Picard iteration with a geometric error bound.
-                  [Source] D'Auria and Palmowski, arXiv:2609.36269, Lemma 6.1 and Theorem 6.2.
-                </aside>
+          <h2>One Picard step: work from left to right</h2>
+
+          <div class="cols-55-45">
+            <div class="compact">
+              <div class="definition-box compact">
+                <span class="label">Geometric strips</span>
+                <p>Let $\bar p=\max_i p_i$ and set $ x_k(v)=\frac{v}{\bar p^k}$ and set:</p>
+                <p class="eq">$$\calD_k=\{(x,v):x_k(v)\le x\le x_{k+1}(v)\}.$$</p>
+              </div>
+
+              <div class="method-box compact">
+                <span class="label">Why it works</span>
+                <p>If $(x,v)\in\calD_k$ and a jump does not create a new minimum, then
+                  $ p_i x\le\bar p x\le x_k(v)$.</p>
+                <p>So the post-jump value lies in territory already constructed.</p>
+              </div>
+            </div>
+
+            <div class="figure-card">
+              <img class="figure" src="assets/reflected_geometric_regions.svg"
+                alt="Geometric regions used to compute one Picard step" />
+            </div>
+          </div>
+
+          <div class="callout small">
+            Each Picard step is a finite method of steps: compute the regions successively from left to right.
+          </div>
+
+          <p class="math-xsmall muted">For fixed $v$ and target $v+a$, only finitely many regions are needed.</p>
+
+          <aside class="notes">
+            Now let me explain why one application of the restart map is actually computable.
+            The multiplicative jumps give us a triangular geometry.
+            Fix the current minimum v and divide the domain using the geometric levels v over p bar to the k.
+            Suppose we are constructing the solution in region D_k.
+            After a jump, either p_i x falls below v and a new minimum is created, in which case the restart value is
+            already prescribed by the current Picard iterate, or it stays above v.
+            In that second case p_i x is at most p bar times x, hence at most x_k of v.
+            So it lands in a region that has already been constructed.
+            This means there is no circular dependence inside the current region.
+            We can solve successively from left to right.
+            For a fixed target height a, only finitely many of these geometric regions are needed.
+            That is the constructive content behind one Picard step.
+          </aside>
         </section>
 
         <!-- Harmonic continuation between minimum updates -->
         <section>
-          <h2>Harmonic continuation between minimum updates</h2>
-          <div class="callout small">One Picard step is realized by a finite $\bar p$-geometric method of steps: split
-            the strip into regions where every non-minimum jump lands in already constructed territory.</div>
-          <div class="theorem-box">
-            <p>For $v\le x\le v+a$, define</p>
-            \[
-            \begin{aligned}
-            (F_a)_{ij}(w;x,v)
-            &=\E_{x,i}\!\left[\e^{-w\tau_{v+a}^\up};
-            \tau_{v+a}^\up<\rho_v,\,J(\tau_{v+a}^\up)=j\right]\\ &\quad+\E_{x,i}\!\left[\e^{-w\rho_v}
-              (H_a)_{J(\rho_v),j}(X(\rho_v));\,\rho_v<\tau_{v+a}^\up\right]. \end{aligned} \] </div>
-              <div class="cols-60-40 harmonic-layout">
-                <div class="method-box compact">
-                  <p class="eq">\[
-                    \mF_a(w;v,v)=\mH_a(v),\qquad \mF_a(w;v+a,v)=\mId.
-                    \]</p>
-                  <p>Extend:<br />$\mF_a(x,v)=\begin{cases}\mH_a(x) & \text{for } 0&lt;x&lt;v, \\ \mId & \text{for }
-                    x&gt;v+a. \end{cases}$</p>
-                </div>
-                <div class="compact">
-                  <p>First-step conditioning gives</p>
-                  <p class="eq">\[
-                    \mathcal A^\dagger \mF_a(\cdot,v)(x)=0,
-                    \qquad v\lt x\lt v+a.
-                    \]</p>
-                  <p class="small muted">The lower branch automatically selects the new-minimum value after an
-                    overshoot.</p>
-                </div>
-              </div>
-              <aside class="notes">
-                The landing level cannot be integrated out. If p_i x falls below v, the extension returns $H_a(p_i x)$,
-                exactly the restart value at the new minimum. The finite $\bar p$-geometric regions are the constructive
-                implementation of one Picard step.
-                [Source] D'Auria and Palmowski, arXiv:2609.36269, Proposition 6.3 and Theorem 6.7.
-              </aside>
+          <h2>From the minimum to any starting point</h2>
+
+          <div class="definition-box compact">
+            <p>Once $\mH_a(v)$ is known, let $\mF_a(w;x,v)$ be its continuation for $v\le x\le v+a$.</p>
+          </div>
+
+          <div class="cols">
+            <div class="method-box compact math-small">
+              <span class="label">Boundary values</span>
+              <p class="eq">$$ \mF_a(w;v,v)=\mH_a(v),\qquad \mF_a(w;v+a,v)=\mId. $$</p>
+              <p>Between the two boundaries, $\mF_a$ is obtained by the same first-step construction used in the Picard
+                step.</p>
+            </div>
+
+            <div class="theorem-box compact math-small">
+              <span class="label">Reflected first passage</span>
+              <p class="eq">$$
+                \boxed{\E_{(x,v),i}\!\left[\e^{-w\tau_a};\,\tau_a\lt\infty,\,J(\tau_a)=j\right]=(\mF_a(w;x,v))_{ij}.} $$
+              </p>
+            </div>
+          </div>
+
+          <div class="callout small">
+            In particular, starting from the current minimum, $\mF_a(w;v,v)=\mH_a(v)$.
+          </div>
+
+          <p class="math-xsmall muted">The proof is closed by the bounded Doob martingale associated with the terminal
+            reflected-passage variable.</p>
+
+          <aside class="notes">
+            We have constructed H_a only when the process starts exactly from its current minimum.
+            To treat an arbitrary initial position x above the current minimum v, we extend H_a inside the strip between
+            v and v plus a.
+            At the lower boundary the continuation is H_a of v.
+            At the upper boundary the reflected passage has occurred, so the value is the identity matrix.
+            Between the boundaries we use the same first-step construction as before.
+            The resulting matrix F_a is exactly the reflected first-passage transform.
+            So the complicated restart construction has produced the same kind of object as in the earlier exit
+            problems: a matrix-valued passage transform.
+            The proof can be closed cleanly with a bounded Doob martingale.
+          </aside>
         </section>
 
         <!-- Doob martingale for the reflected passage -->
         <section>
-          <h2>Doob martingale for the reflected passage</h2>
-          <div class="theorem-box compact">
-            <p>For $v\le x\lt v+a$, define the stopped row-vector process</p>
-            <p class="eq">\[
-              \boxed{\;M_t=\e^{-w(t\wedge\tau_a)}
-              \vec e_{J(t\wedge\tau_a)}
-              \mF_a\!\left(X(t\wedge\tau_a),\,V_{t\wedge\tau_a}\right)\;}
-              \]</p>
-            <p>Then $M_t$ is bounded and is the Doob martingale of the terminal reflected-passage variable.</p>
+          <h2>Why does the construction give the transform?</h2>
+
+          <div class="theorem-box compact math-small">
+            <p>Stop the process when the reflected height reaches $a$ and consider</p>
+            <p class="eq">$$
+              \mM_t=\e^{-w(t\wedge\tau_a)}\mE_{J(t\wedge\tau_a)}\,\mF_a\!\left(w;X(t\wedge\tau_a),\underline
+              X_{t\wedge\tau_a}\right). $$</p>
+            <p>The first-step identities make $\mM_t$ a bounded Doob martingale.</p>
           </div>
-          <div class="three-cols proof-beats">
-            <div class="compact">
+
+          <div class="cols">
+            <div class="definition-box compact">
               <span class="label">Before passage</span>
-              <p>Apply the reflected first-passage identity again from the current state
-                $(X(t),V_t,J(t))$.</p>
+              <p>The same restart identity holds from the current state $(X_t,\underline X_t,J_t)$.</p>
             </div>
-            <div class="compact">
+
+            <div class="method-box compact">
               <span class="label">At passage</span>
-              <p>Passage through the reflected level is continuous from below, so $X(\tau_a)=V_{\tau_a}+a$ and
-                $\mF_a=\mId$.</p>
-            </div>
-            <div class="compact">
-              <span class="label">Boundedness</span>
-              <p>The transform is sub-stochastic: $0\le\mF_a\mathbf1\le\mathbf1$, hence the stopped process is bounded.
-              </p>
+              <p>$Y_{\tau_a}=a$, hence</p>
+              <p class="eq">$$ \mF_a(w;X(\tau_a),\underline X_{\tau_a})=\mId. $$</p>
             </div>
           </div>
-          <div class="callout small">Use the compensated-jump drift only as intuition in the talk; the arXiv proof
-            presents the cleaner Doob-martingale argument.</div>
+
+          <div class="callout small">
+            Optional stopping gives exactly the reflected first-passage transform.
+          </div>
+
           <aside class="notes">
-            This slide is updated to the arXiv proof: the martingale is identified as a conditional expectation of the
-            terminal variable, not derived by invoking Dynkin--Lebesgue--Stieltjes along the diagonal. This avoids the
-            differentiability issue noted in the paper.
-            [Source] D'Auria and Palmowski, arXiv:2609.36269, Theorem 6.4, Proposition 6.5 and Remark 6.6.
+            I will not go through another generator calculation here.
+            There is a cleaner probabilistic way to close the argument.
+            Evaluate F_a along the process and stop when the reflected height reaches a.
+            The restart identities we have just constructed imply that the discounted process is a bounded Doob
+            martingale.
+            At the passage time the reflected height is exactly a, so F_a is the identity matrix.
+            Taking expectations therefore gives the reflected first-passage transform stated on the previous slide.
+            This martingale viewpoint is also where the argument connects most naturally with Offer Kella's work.
           </aside>
         </section>
 
         <!-- Reflected first-passage transform -->
-        <section class="reflected-result-slide">
-          <h2>Reflected first-passage transform</h2>
-          <div class="theorem-box compact math-small">
-            <p>For $w,a>0$, $0 \lt u \le x$, and $V_0=u$,</p>
-            <p class="eq">\[
-              \boxed{\;
-              \E_{x,i}\!\left[\e^{-w\widetilde\tau_a};\,
-              \widetilde\tau_a&lt;\infty,\,J(\widetilde\tau_a)=j\right]
-              =(F_a)_{ij}(w;x,u).\;}
-              \]</p>
-          </div>
-          <div class="cols">
-            <div class="method-box compact math-small">
-              <span class="label">Starting from the minimum</span>
-              <p class="eq">\[
-                \E_{u,i}\!\left[\e^{-w\widetilde\tau_a};\,
-                \widetilde\tau_a&lt;\infty,\,J(\widetilde\tau_a)=j\right]
-                =(H_a)_{ij}(u).
-                \]</p>
+        <section class="kella-connection-slide">
+          <h2>A familiar combination of ideas</h2>
+
+          <span class="kella-portrait" aria-hidden="true">
+            <span class="kella-portrait-frame">
+              <img src="assets/Offer_Kella.jpg" alt="" />
+            </span>
+            <span class="kella-portrait-name">Offer Kella</span>
+          </span>
+
+          <div class="cols kella-cols">
+            <div class="theorem-box compact">
+              <span class="label">In our reflected AIMD problem</span>
+              <p>Three structures meet:</p>
+              <p><strong>Markov modulation</strong> &mdash; the environment $J$ changes the local dynamics.</p>
+              <p><strong>Finite variation</strong> &mdash; the running infimum $\underline X$ records new minima.</p>
+              <p><strong>Martingales</strong> &mdash; the passage identity is closed by a stopped Doob martingale.</p>
             </div>
-            <div class="definition-box compact math-small">
-              <span class="label">Already above the reflected level</span>
-              <p><br />If $x\ge u+a$, then $\widetilde\tau_a=0$ and the transform is $\delta_{ij}$.<br />&nbsp;</p>
+
+            <div class="method-box compact">
+              <span class="label">Recurring themes in Offer's work</span>
+              <p><strong>Reflection and storage</strong> with L&eacute;vy input.<br /><span
+                  class="small muted">Kella&ndash;Whitt, 1992.</span></p>
+              <p><strong>Markov additive processes</strong> and their multidimensional martingales.<br /><span
+                  class="small muted">Asmussen&ndash;Kella, 2000.</span></p>
+              <p><strong>Markov processes coupled to finite-variation processes.</strong><br /><span
+                  class="small muted">Kella&ndash;Yor, 2017.</span></p>
             </div>
           </div>
-          <div class="callout small">A downward jump cannot increase $X-V$, so passage through level $a$ is continuous
-            from below.</div>
+
+          <div class="callout">
+            A different process, but a remarkably familiar probabilistic language.
+          </div>
+
           <aside class="notes">
-            At $\widetilde\tau_a$, we have $X=V+a$ and therefore $\mF_a=\mId$. Letting $t\to\infty$ in the bounded
-            martingale gives the transform by bounded convergence.
-            [Source] D'Auria and Palmowski, arXiv:2609.36269, Theorem 6.4.
+            There is a connection to Offer's work that I want to mention, without claiming a theorem that we do not use.
+            Look at the ingredients that appeared naturally in the reflected problem.
+            We have a Markov-modulated process.
+            We have a running infimum, which is a finite-variation coordinate.
+            And the final identification is made through a martingale.
+            These are all themes that appear repeatedly in Offer's work.
+            With Ward Whitt, reflection and storage were studied through martingales for Levy input.
+            With Søren Asmussen, the martingale viewpoint was developed for Markov additive processes.
+            With Marc Yor, Markov processes coupled to finite-variation processes were treated in a common martingale
+            framework.
+            Our AIMD process is a different object and our argument is not an application of those results.
+            But it is pleasant that, in trying to understand this reflected Markov-modulated resetting process, we end
+            up speaking a probabilistic language that Offer helped develop.
           </aside>
         </section>
       </section>
@@ -1317,49 +1459,67 @@
       <!-- Take-home points -->
       <section>
         <h2>Take-home points</h2>
+
         <div class="three-cols">
           <div class="theorem-box compact">
             <span class="label">1</span>
-            <p>Upward and downward passage use the same regime-word Green kernel, while the downward forcing
-              retains the boundary $b$.</p>
+            <h3>One recursion</h3>
+            <p>Upward and downward one-sided exits are driven by the same spatial resolvent.</p>
           </div>
+
           <div class="method-box compact">
             <span class="label">2</span>
-            <p>Reflection is a restart problem: the continuation matrix $\mH_a(v)$ retains the absolute minimum after
-              each overshoot at every
-              strict new minimum.</p>
+            <h3>Build and restart</h3>
+            <p>Two-sided exit is built strip by strip; reflection restarts at each new minimum.</p>
           </div>
+
           <div class="definition-box compact">
             <span class="label">3</span>
-            <p>The Doob martingale closes the reflected transform; Kella's martingale lineage explains why this is the
-              natural object to look for.</p>
+            <h3>Martingale closure</h3>
+            <p>The reflected passage transform is identified by a bounded Doob martingale.</p>
           </div>
         </div>
-        <aside class="notes">
-          Close by returning to the two renewal scales: words in space and restarts at minima. The martingale is the
-          bridge that turns the second construction into a first-passage identity.
-        </aside>
-      </section>
 
-      <!-- Optional closing line -->
-      <section data-visibility="hidden" class="story-slide">
-        <h2>Optional closing line</h2>
         <div class="callout">
-          <p>"Offer, thank you for showing us that a good martingale is not a trick; it is a way of organizing
-            stochastic life. I hope this AIMD process, despite its repeated collapses, has increased additively enough
-            to honor you."</p>
+          Regime words describe the evolution between jumps; restarts describe what happens when the minimum changes.
         </div>
-        <aside class="notes">Optional, 15 seconds. Use only if the room has the right tone.</aside>
+
+        <aside class="notes">
+          Let me leave you with three points.
+          First, the same spatial recursion sits behind both one-sided exit problems.
+          Second, the harder boundary problems remain constructive: two-sided exit is built strip by strip, and
+          reflection is handled by restarting at new minima.
+          Third, the reflected first-passage transform is closed by a bounded Doob martingale.
+          The two recurring mechanisms are regime words in the interior and restarts when the minimum changes.
+        </aside>
       </section>
 
       <!-- Questions -->
       <section>
         <h2>Questions</h2>
+
         <div class="center" style="margin-top: 1.4em;">
           <p style="font-size: 1.2em;"><strong>Thank you.</strong></p>
           <p class="muted">Bernardo D'Auria, University of Padova</p>
           <p class="muted small">Joint work with Zbigniew Palmowski</p>
         </div>
+
+        <!-- Option 1 -->
+        <div class="callout small hidden">
+          And thank you, Offer. Working with you over the years has always been a pleasure &mdash; and I have learned a
+          great deal along the way.
+        </div>
+
+        <!-- Option 2 -->
+        <div class="callout small">
+          And thank you, Offer. It has always been a pleasure working with you, and an opportunity for me to learn
+          something new.
+        </div>
+
+        <aside class="notes">
+          End simply.
+          If the moment feels right, acknowledge Offer without turning the attention toward him for too long.
+        </aside>
       </section>
 
       <!-- Selected references (vertical slides) -->

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 680" role="img" aria-labelledby="title desc">
+  <title id="title">AIMD process, running minimum, and reflected process</title>
+  <desc id="desc">The upper panel shows an AIMD path X and its running minimum. A downward jump creates a new minimum. The lower panel shows Y equals X minus the running minimum, resetting to zero at the same jump.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4b5563"/>
+    </marker>
+    <style>
+      .axis { stroke:#9ca3af; stroke-width:2; fill:none; }
+      .guide { stroke:#9ca3af; stroke-width:2; stroke-dasharray:7 7; fill:none; }
+      .xpath { stroke:#1d4ed8; stroke-width:6; fill:none; stroke-linejoin:round; stroke-linecap:round; }
+      .minpath { stroke:#b45309; stroke-width:6; fill:none; stroke-linejoin:round; stroke-linecap:round; }
+      .ypath { stroke:#047857; stroke-width:6; fill:none; stroke-linejoin:round; stroke-linecap:round; }
+      .dotx { fill:#1d4ed8; }
+      .dotmin { fill:#b45309; }
+      .doty { fill:#047857; }
+      .label { font-family:Inter,Arial,sans-serif; font-size:28px; fill:#111827; }
+      .small { font-family:Inter,Arial,sans-serif; font-size:23px; fill:#4b5563; }
+      .blue { fill:#1d4ed8; font-weight:700; }
+      .orange { fill:#b45309; font-weight:700; }
+      .green { fill:#047857; font-weight:700; }
+    </style>
+  </defs>
+
+  <!-- Upper panel: X and its running minimum -->
+  <path class="axis" d="M95 55 V330 H1035"/>
+  <text class="small" x="1008" y="365">t</text>
+
+  <path class="xpath" d="M130 260 L300 155 L300 218 L500 95 L500 285 L710 155 L710 210 L940 75"/>
+  <path class="minpath" d="M130 260 H500 V285 H940"/>
+
+  <circle class="dotx" cx="500" cy="285" r="8"/>
+  <circle class="dotmin" cx="500" cy="285" r="8"/>
+
+  <text class="label blue" x="805" y="137">X</text>
+  <text class="label orange" x="810" y="318">X̲</text>
+  <text class="small" x="150" y="248">v</text>
+  <text class="small" x="523" y="316">y</text>
+
+  <!-- Common event marker -->
+  <path class="guide" d="M500 65 V615"/>
+  <path d="M530 260 C565 245 595 238 630 235" stroke="#4b5563" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  <text class="small" x="646" y="241">new minimum</text>
+
+  <!-- Lower panel: reflected height Y -->
+  <path class="axis" d="M95 445 V610 H1035"/>
+  <text class="small" x="1008" y="644">t</text>
+  <text class="small" x="62" y="617">0</text>
+
+  <path class="ypath" d="M130 610 L300 505 L300 568 L500 445 L500 610 L710 480 L710 535 L940 400"/>
+  <circle class="doty" cx="500" cy="610" r="8"/>
+
+  <text class="label green" x="760" y="432">Y = X − X̲</text>
+  <path d="M528 585 C555 570 575 563 600 560" stroke="#4b5563" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  <text class="small" x="616" y="566">restart</text>
+
+  <!-- Visual link: the same jump changes the minimum and resets Y -->
+  <path d="M463 320 C430 355 430 405 463 438" stroke="#4b5563" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+</svg>
