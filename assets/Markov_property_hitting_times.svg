@@ -24,14 +24,14 @@
   <circle cx="365" cy="285" r="8" class="hit"/><circle cx="365" cy="285" r="15" class="hit-ring"/>
   <circle cx="792" cy="140" r="8" class="hit"/><circle cx="792" cy="140" r="15" class="hit-ring"/>
   <text x="84" y="438" class="label small">0</text><text x="84" y="147" class="label"><tspan class="math">a</tspan></text><text x="84" y="292" class="label"><tspan class="math">x</tspan></text>
-  <text x="822" y="458" class="label"><tspan class="math">t</tspan></text><text x="72" y="82" class="label"><tspan class="math">X</tspan><tspan class="math sub" dx="-4">t</tspan></text>
-  <text x="356" y="458" class="label"><tspan class="math">τ</tspan><tspan class="math sub" dx="-4">x</tspan><tspan class="math sup" dx="-5">↑</tspan></text>
-  <text x="783" y="458" class="label"><tspan class="math">τ</tspan><tspan class="math sub" dx="-4">a</tspan><tspan class="math sup" dx="-5">↑</tspan></text>
+  <text x="822" y="458" class="label"><tspan class="math">t</tspan></text><text x="72" y="82" class="label"><tspan class="math">X</tspan><tspan class="math sub" dx="0">t</tspan></text>
+  <text x="356" y="450" class="label"><tspan class="math">τ</tspan><tspan class="math sub" dx="-2">↑x</tspan></text>
+  <text x="783" y="450" class="label"><tspan class="math">τ</tspan><tspan class="math sub" dx="-2">↑a</tspan></text>
   <text x="205" y="276" class="label small"><tspan class="math">Z</tspan><tspan class="mathrm">(0 ↑ </tspan><tspan class="math">x</tspan><tspan class="mathrm">)</tspan></text>
-  <text x="610" y="168" class="label small"><tspan class="math">Z</tspan><tspan class="mathrm">(</tspan><tspan class="math">x</tspan><tspan class="mathrm"> ↑ </tspan><tspan class="math">a</tspan><tspan class="mathrm">)</tspan></text>
+  <text x="610" y="168" class="label small"><tspan class="math">Z</tspan><tspan class="mathrm">(</tspan><tspan class="math">x ↑ a</tspan><tspan class="mathrm">)</tspan></text>
   <text x="305" y="50" class="label small">
-    <tspan class="math">τ</tspan><tspan class="sub">a</tspan><tspan class="sup">↑</tspan><tspan class="mathrm">(0,J(0)) ≍ </tspan>
-    <tspan class="math">τ</tspan><tspan class="sub">x</tspan><tspan class="sup">↑</tspan><tspan class="mathrm">(0,J(0)) + </tspan>
-    <tspan class="math">τ</tspan><tspan class="sub">a</tspan><tspan class="sup">↑</tspan><tspan class="mathrm">(x,J(τ</tspan><tspan class="sub">x</tspan><tspan class="sup">↑</tspan><tspan class="mathrm">))</tspan>
+    <tspan class="math">τ</tspan><tspan class="sub">↑a</tspan><tspan class="mathrm">(0,J(0)) ≍ </tspan>
+    <tspan class="math">τ</tspan><tspan class="sub">↑x</tspan><tspan class="mathrm">(0,J(0)) + </tspan>
+    <tspan class="math">τ</tspan><tspan class="sub">↑a</tspan><tspan class="mathrm">(x, J(τ</tspan><tspan class="sub">↑x</tspan><tspan class="mathrm">))</tspan>
   </text>
 </svg>

@@ -7,7 +7,7 @@
   <title>Exit Problems for Markov-Modulated Additive-Increase Multiplicative-Decrease Processes</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css" />
-  <link rel="stylesheet" href="assets/slides.css?v=20260830" />
+  <link rel="stylesheet" href="assets/slides.css?v=2026" />
 </head>
 
 <body>
@@ -21,6 +21,7 @@
         </pre>
       </section>-->
 
+      <!-- Exit Problems for Markov-Modulated AIMD Processes -->
       <section class="title-slide unipd-title-slide">
         <div class="unipd-cover-mark" aria-hidden="true"></div>
 
@@ -56,6 +57,7 @@
         </aside>
       </section>
 
+      <!-- Optional opening story: why this problem fits Offer -->
       <section class="story-slide">
         <h2>Optional opening story: why this problem fits Offer</h2>
         <div class="definition-box compact">
@@ -71,7 +73,11 @@
           talk into a biographical lecture.
         </aside>
       </section>
+
+      <!-- AIMD overview (vertical slides) -->
       <section>
+
+        <!-- AIMD processes -->
         <section>
           <h2>AIMD processes</h2>
           <div class="definition-box compact">
@@ -96,6 +102,7 @@
           </aside>
         </section>
 
+        <!-- AIMD dynamics -->
         <section>
           <h2>AIMD dynamics</h2>
           <div class="cols">
@@ -124,6 +131,7 @@
           </div>
         </section>
 
+        <!-- AIMD sample path -->
         <section>
           <h2>AIMD sample path</h2>
           <div class="figure-card">
@@ -133,6 +141,7 @@
 
       </section>
 
+      <!-- AIMD and TCP -->
       <section>
         <h2>AIMD and TCP</h2>
         <div class="definition-box compact">
@@ -164,7 +173,7 @@
         </aside>
       </section>
 
-
+      <!-- Earlier TCP/AIMD work -->
       <section>
         <h2>Earlier TCP/AIMD work</h2>
         <div class="definition-box compact">
@@ -192,7 +201,9 @@
         </div>
       </section>
 
+      <!-- Partial resetting (vertical slides) -->
       <section>
+        <!-- AIMD and Partial resetting -->
         <section>
           <h2>AIMD and Partial resetting</h2>
           <div class="definition-box compact">
@@ -226,12 +237,15 @@
               </p>
             </div>
           </div>
+          <div class="callout small">Other related topics: Biology, chemistry, ecology, physics, environment and risk.
+          </div>
           <aside class="notes">
             This slide broadens the motivation without turning the introduction into a literature review. Mention
             queueing explicitly.
           </aside>
         </section>
 
+        <!-- More on Partial resetting -->
         <section data-visibility="hidden">
           <h2>more on Partial resetting</h2>
           <div class="cols">
@@ -265,7 +279,9 @@
         </section>
       </section>
 
+      <!-- Markov-modulated AIMD setup (vertical slides) -->
       <section>
+        <!-- Our starting point -->
         <section>
           <h2>Our starting point:</h2>
           <div class="cols">
@@ -304,8 +320,10 @@
                 \(\P(i_{n+1}=j\mid i_n=i)=q_{ij}\).</p>
             </div>
           </div>
-          <div class="callout fragment"><strong>Note:</strong> the skip-free/first-step strategy survives, but scalar
-            $q$-series are replaced by non-commutative regime-indexed matrix series.</div>
+          <div class="callout fragment hidden">
+            <strong>Note:</strong> the skip-free/first-step strategy survives, but scalar $q$-series are replaced by
+            non-commutative regime-indexed matrix series.
+          </div>
           <p class="eq math-xsmall">&dagger;R. van der Hofstad, S. Kapodistria, Z. Palmowski, S. Shneer. J. Appl.
             Probab. 60 (2023)</p>
           <aside class="notes">
@@ -313,6 +331,7 @@
           </aside>
         </section>
 
+        <!-- Markov modulated AIMD simulating one sample path -->
         <section>
           <h2>Markov modulated AIMD simulating one sample path</h2>
           <div id="plot" class="figure-card">
@@ -336,6 +355,7 @@
         </section>
         -->
 
+        <!-- Markov modulated AIMD sample path -->
         <section data-visibility="hidden">
           <h2>Markov modulated AIMD sample path</h2>
           <div class="figure-card">
@@ -345,26 +365,28 @@
         </section>
       </section>
 
+      <!-- Objects of interest -->
       <section>
         <h2>Objects of interest</h2>
         <div class="definition-box">
           <p>For fixed levels $0\le b\lt a$, define</p>
           <p class="eq">\[
-            \tau_a^\up=\inf\{t\ge0:X_t\ge a\},\qquad
-            \tau_b^\down=\inf\{t\ge0:X_t\le b\}.
+            \tau_{\up a}=\inf\{t\ge0:X_t\ge a\},\qquad
+            \tau_{\down b}=\inf\{t\ge0:X_t\le b\}.
             \]</p>
         </div>
         <div class="cols">
           <div class="card compact fragment" data-fragment-index="2">
             <h3>Upward one-sided transform <span class="label">$\mZ(w;\U{x}{a})$</span></h3>
             <p class="eq small">\[
-              \ \mZ_{ij}(w;\U{x}{a})=\E_{x,i}\!\big[\e^{-w\tau_a^\up};\,J(\tau_a^\up)=j\big].
+              \ \mZ_{ij}(w;\U{x}{a})=\E_{x,i}\!\big[\e^{-w\tau_{\up a}};\,J(\tau_{\up a})=j\big].
               \]</p>
           </div>
           <div class="card compact fragment" data-fragment-index="3">
             <h3>Two-sided upward transform <span class="label">$\mZ(w;\UD{x}{a}{b})$</span></h3>
             <p class="eq small">\[
-              \mZ_{ij}(w;\UD{x}{a}{b})=\E_{x,i}\!\big[\e^{-w\tau_a^\up};\,\tau_a^\up\lt\tau_b^\down,\,J(\tau_a^\up)=j\big].
+              \mZ_{ij}(w;\UD{x}{a}{b})=\E_{x,i}\!\big[\e^{-w\tau_{\up a}};\,\tau_{\up a}\lt\tau_{\down b},\,J(\tau_{\up
+              a})=j\big].
               \]</p>
           </div>
         </div>
@@ -377,37 +399,41 @@
         </aside>
       </section>
 
+      <!-- One jump, one regime change -->
       <section>
-        <h2>A closer look at the introduction of the Markovian environment</h2>
+        <h2>One jump, one regime change</h2>
+
         <div class="cols-45-55">
           <div class="figure-card">
             <img class="figure" src="assets/state_chain.svg" alt="Finite-state modulating chain" />
           </div>
+
           <div class="compact">
-            <p>Starting after a jump at time $t_n$ at level $x_n$ and state $i_n$, the level just after a new jump at
-              time $t_{n+1}$ is</p>
-            <p class="eq">\[
-              x_{n+1}=p_{i_n}\left(x_n+\frac{t_{n+1}-t_n}{c_{i_n}}\right).
-              \]</p>
-            <p>The next state $i_{n+1}$ is selected randomly according to the distribution given by the
-              $i_n$-th row of the transition matrix $\mQ$.</p>
-            <p>Hence a first-step equation mixes:</p>
+            <p>While in state $i$, the AIMD parameters are</p>
+            <p class="eq">$$ (c_i,\lambda_i,p_i). $$</p>
+            <p>The level then evolves according to two simple rules.</p>
             <ul>
-              <li>state-dependent linear growth $t\mapsto x+t/c_i$;</li>
-              <li>state-dependent multiplicative jump $x\mapsto p_i x$;</li>
-              <li>multiplication by selectors $\mE_i$;</li>
-              <li>matrix products with $\mQ$.</li>
+              <li><strong>Between jumps:</strong> $X$ increases with slope $1/c_i$.</li>
+              <li><strong>At a jump:</strong> $X\mapsto p_iX$, and the new state is $j$ with probability $q_{ij}$.</li>
             </ul>
+
+            <p class="eq">$$ (x,i)\longmapsto (p_i x,j), \qquad \mathbb P(i\to j)=q_{ij}. $$</p>
+
+            <div class="callout small">
+              The current regime controls both the growth and the next decrease.
+            </div>
           </div>
         </div>
+
         <aside class="notes">
-          The non-commutativity is the main technical price. Light line: "Matrices, unlike scalars, do not wait politely
-          in the queue."
-          In scalar AIMD one iterates a one-dimensional functional equation;
-          here each branch carries an index sequence.
+          Read the picture from a single state. While we remain in state i, the process grows with slope 1/c_i and waits
+          an exponential time with rate lambda_i.
+          At the jump, the level is multiplied by p_i, then the environment moves to j according to the i-th row of Q.
+          The important point is that the parameters used at the jump are those of the pre-jump state.
         </aside>
       </section>
 
+      <!-- Some notation -->
       <section>
         <h2>Some notation</h2>
         <div class="method-box compact">
@@ -440,10 +466,12 @@
         </aside>
       </section>
 
+      <!-- Upward one-sided exit (vertical slides) -->
       <section>
+        <!-- Upward one-sided exit -->
         <section>
           <h2>Upward one-sided exit:
-            <span class="math small">$\mZ(\U{x}{a}) = \E_x\!\big[\e^{-w\tau_a^\up};\,J(\tau_a^\up)\big]$</span>
+            <span class="math small">$\mZ(\U{x}{a}) = \E_x\!\big[\e^{-w\tau_{\up a}};\,J(\tau_{\up a})\big]$</span>
           </h2>
           <div class="theorem-box compact">
             <p>For $0\lt x\lt a$, upward passage is continuous, so the process must cross $x$ before $a$.</p>
@@ -457,12 +485,12 @@
             <p>and we are left with computing \(\mZ(\U{0}{x})\) for any \(x\ge0\).</p>
           </div>
           <div class="callout small fragment" data-fragment-index="2">The proof is the strong Markov property at
-            $\tau_x^\up$, plus local invertibility of
+            $\tau_{\up x}$, plus local invertibility of
             the matrix evolution.</div>
           <div class="method-box compact fragment" data-fragment-index="2">
             <h3>Main ingredient</h3>
             <p class="eq small">\[
-              \tau_a^\up(0,J(0)) \disteq \tau_x^\up(0,J(0)) + \tau_a^\up(x,J(\tau_x^\up(0,J(0))).
+              \tau_{\up a}(0,J(0)) \disteq \tau_{\up x}(0,J(0)) + \tau_{\up a}(x,J(\tau_{\up x}(0,J(0))).
               \]</p>
           </div>
           <aside class="notes">
@@ -471,6 +499,7 @@
           </aside>
         </section>
 
+        <!-- Strong Markov property at the hitting times -->
         <section>
           <h2>Strong Markov property at the hitting times</h2>
           <div class="figure-card">
@@ -480,65 +509,211 @@
         </section>
       </section>
 
-
+      <!-- Upward exit: condition on the first jump (vertical slides) -->
       <section>
-        <h2>Computing the upward scale matrix</h2>
-        <p>First-step analysis at the first jump gives</p>
-        <div class="theorem-box math-small">
-          \[
-          \mId=\mExp(-a\vecz) \mZ^{-1}(\U{0}{a})
-          +\mDelta(\vecgamma)\int_0^\infty
-          \mDelta(x\le a\vecp) \mExp(-(\vecz/\vecp)x) \mQ\,\mZ^{-1}(\U{0}{x})\,dx.
-          \]
-        </div>
-        <div class="flow">
-          <div class="node">split at first jump</div>
-          <div class="arrow">$\Rightarrow$</div>
-          <div class="node">Volterra-type matrix equation</div>
-          <div class="arrow">$\Rightarrow$</div>
-          <div class="node">Laplace functional equation</div>
-        </div>
-        <p class="small muted">Here $(x\le a\vecp)_i = \one\{x \le a p_i\}$.</p>
-        <aside class="notes">
-          The integral equation is the core computational object. Explain the two terms: no jump before hitting a, or
-          one jump and restart from p_i times the pre-jump level.
-        </aside>
+        <!-- Upward exit: condition on the first jump -->
+        <section data-transition="none">
+          <h2>Upward exit: condition on the first jump &mdash;
+            <span class="math small">$\mZ(\U{x}{a}) = \E_x\!\big[\e^{-w\tau_{\up a}};\,J(\tau_{\up a})\big]$</span>
+          </h2>
+
+          <div class="matrix-step">
+            <div class="theorem-box math-small">
+              <p>First-step analysis, one entry at a time:</p>
+              <p class="eq">$$ \mZ_{ij}(\U{0}{a})=\underbrace{\mred{\e^{-az_i}\delta_{ij}}}_{\text{no jump before
+                }a}+\underbrace{\displaystyle\int_0^{\mred{p_i}a}\mred{\gamma_i}\e^{-(\mred{z_i}/\mred{p_i})x}\sum_k\mred{q_{ik}}\mred{\mZ_{kj}}(\U{x}{a})\,dx\vphantom{\Bigg|_X}}_{\text{first
+                jump occurs before }a}. $$</p>
+            </div>
+
+            <div class="method-box math-small fragment" data-fragment-index="1">
+              <p>In matrix form:</p>
+              <p class="eq">$$
+                \mZ(\U{0}{a})=\mgreen{\mExp(-a\vecz)}+\mgreen{\mDelta(\vecgamma)}\int_0^\infty\mgreen{\mDelta(x\le
+                a\vecp)}\mgreen{\mExp(-(\vecz/\vecp)x)}\mgreen{\mQ\,\mZ}(\U{x}{a})\,dx. $$</p>
+            </div>
+          </div>
+
+          <aside class="notes">
+            We start entrywise, fixing the initial regime i and the final regime j.
+            The first underbrace is the contribution of paths with no jump before reaching a.
+            Reaching a takes time c_i a, so the no-jump probability together with the Laplace discount gives exp minus a
+            z_i.
+            Since no jump occurs, the regime remains i, which gives delta_ij.
+            The second underbrace is the contribution of paths for which the first jump occurs before reaching a.
+            I use x for the level immediately after that jump.
+            Since x equals p_i T over c_i, it ranges from zero to p_i a.
+            After changing variable from T to x, the jump density together with the Laplace discount gives gamma_i exp
+            minus z_i x over p_i.
+            The factor q_ik chooses the new regime k, and Z_kj from x to a gives the continuation after the jump.
+            Click 1.
+            Now compare the red scalar quantities with their green matrix counterparts directly underneath.
+            The no-jump term becomes the diagonal matrix E of minus a z.
+            Gamma_i becomes Delta gamma.
+            The regime-dependent upper limits p_i a become a common integral to infinity together with the diagonal
+            indicator Delta of x less than or equal to a p.
+            The exponential factors become E of minus z over p times x.
+            Finally the sum over k becomes matrix multiplication by Q.
+          </aside>
+        </section>
+
+        <!-- Upward exit: condition on the first jump -->
+        <section data-transition="none">
+          <h2>Upward exit: condition on the first jump &mdash;
+            <span class="math small">$\mZ(\U{x}{a}) = \E_x\!\big[\e^{-w\tau_{\up a}};\,J(\tau_{\up a})\big]$</span>
+          </h2>
+
+          <div class="matrix-step">
+            <div class="theorem-box math-small">
+              <p>In matrix form:</p>
+              <p class="eq">$$ \mZ(\U{0}{a})=\mExp(-a\vecz)+\mDelta(\vecgamma)\int_0^\infty\mDelta(x\le
+                a\vecp)\mExp(-(\vecz/\vecp)x)\mQ\,\mred{\mZ}(\U{x}{a})\,dx. $$</p>
+            </div>
+
+            <div class="method-box math-small fragment" data-fragment-index="1">
+              <p>Using the spatial factorization:</p>
+              <p class="eq">$$ \mZ(\U{0}{a})=\mExp(-a\vecz)+\mDelta(\vecgamma)\int_0^\infty\mDelta(x\le
+                a\vecp)\mExp(-(\vecz/\vecp)x)\mQ\,\mgreen{\mZ^{-1}(\U{0}{x})\mZ(\U{0}{a})}\,dx. $$</p>
+            </div>
+          </div>
+
+          <aside class="notes">
+            We now start from exactly the matrix equation obtained in the previous step.
+            The only object I want to change is the continuation matrix from x to a, highlighted in red.
+            Click 1.
+            From the spatial factorization proved before, Z from x to a equals Z from zero to x inverse times Z from
+            zero to a.
+            This is the green replacement.
+            Notice the order of the factors.
+            In the scalar case the order would be invisible, but here it matters.
+          </aside>
+        </section>
+
+        <!-- Upward exit: condition on the first jump -->
+        <section data-transition="none">
+          <h2>Upward exit: condition on the first jump &mdash;
+            <span class="math small">$\mZ(\U{x}{a}) = \E_x\!\big[\e^{-w\tau_{\up a}};\,J(\tau_{\up a})\big]$</span>
+          </h2>
+
+          <div class="matrix-step">
+            <div class="theorem-box math-small">
+              <p>After the spatial factorization:</p>
+              <p class="eq">$$ \mred{\mZ(\U{0}{a})}=\mExp(-a\vecz)+\mDelta(\vecgamma)\int_0^\infty\mDelta(x\le
+                a\vecp)\mExp(-(\vecz/\vecp)x)\mQ\,\mZ^{-1}(\U{0}{x})\mred{\mZ(\U{0}{a})}\,dx. $$</p>
+            </div>
+
+            <div class="method-box math-small fragment" data-fragment-index="1">
+              <p>Multiply on the right by $\mZ^{-1}(\U{0}{a})$:</p>
+              <p class="eq">$$
+                \mgreen{\mId}=\mExp(-a\vecz)\mgreen{\mZ^{-1}(\U{0}{a})}+\mDelta(\vecgamma)\int_0^\infty\mDelta(x\le
+                a\vecp)\mExp(-(\vecz/\vecp)x)\mQ\,\mgreen{\mZ^{-1}(\U{0}{x})}\,dx. $$</p>
+            </div>
+          </div>
+
+          <aside class="notes">
+            The same matrix Z from zero to a now occurs on the left and at the far right inside the integral.
+            These are the red objects.
+            Click 1.
+            Multiply the whole identity on the right by Z from zero to a inverse.
+            The side matters because matrix multiplication is not commutative.
+            The left-hand side becomes the identity.
+            The factor at the far right inside the integral cancels.
+            The no-jump term acquires the inverse matrix on its right.
+            We are left with an integral equation directly for the inverse upward scale matrix.
+            This is the equation that we will transform and solve.
+            From now on I will use similar matrix manipulations without displaying all the intermediate algebra.
+          </aside>
+        </section>
       </section>
 
+      <!-- Upward scale matrix (vertical slides) -->
       <section>
-        <h2>Upward one-sided exit: Laplace-domain solution</h2>
-        <p>Let $\tmU(s)=\int_0^\infty \e^{-sa} \mZ^{-1}(\U{0}{a})\,da$. Then</p>
-        <div class="theorem-box math-small">
-          \[
-          \tmU(s)=\mA(s)\mB+\mA(s)\sum_{i=1}^m \mE_i \mQ\,\tmU(s/p_i).
-          \]
-        </div>
-        <p>Iterating this equation yields the phase-word coefficients and the spatial resolvent</p>
-        <div class="method-box math-small">
-          <p>For a phase word $\alpha=(i_1,\ldots,i_n)$, write $\alpha\upord_k=(i_1,\ldots,i_k)$ and
-            $p_\alpha=\prod_{\ell=1}^{|\alpha|}p_{i_\ell}$.</p>
-          \[
-          \mK_\alpha(s)=\mA(s)\mE_{i_1}\mQ
-          \prod_{k=2}^{|\alpha|}
-          \mA\!\left(s/p_{\alpha\upord_{k-1}}\right)\mE_{i_k}\mQ,
-          \]
-          \[
-          (\cR F)(s)=F(s)+\sum_{n\ge1}\sum_{|\alpha|=n}
-          \mK_\alpha(s)F(s/p_\alpha),
-          \qquad
-          \boxed{\;\tmU(s)=(\cR(\mA\mB))(s)\;}
-          \]
-        </div>
-        <p class="small muted">The word series converges super-geometrically, since
-          \(\mA(s/p_{\alpha\upord_k})=O(p_{\alpha\upord_k})\) along each growing word.</p>
-        <aside class="notes">
-          The important idea is not to display every index but to tell the story. Light line if the audience smiles at
-          notation: "The words are finite, but the notation is doing its best to look infinite." each word i_1...i_n is
-          a possible
-          sequence of post-jump regimes.
-        </aside>
+        <!-- Upward scale matrix: Laplace transform -->
+        <section data-transition="none">
+          <h2>Upward scale matrix: Laplace transform &mdash;
+            <span class="math small">$\mZ(\U{x}{a}) = \E_x\!\big[\e^{-w\tau_{\up a}};\,J(\tau_{\up a})\big]$</span>
+          </h2>
+
+          <p>We have obtained an equation for the inverse scale matrix $\mU(a)=\mZ^{-1}(\U{0}{a})$:</p>
+
+          <div class="theorem-box math-small">
+            <p class="eq">$$ \mId=\mExp(-a\vecz)\mU(a)+\mDelta(\vecgamma)\int_0^\infty\mDelta(x\le
+              a\vecp)\mExp(-(\vecz/\vecp)x)\mQ\,\mU(x)\,dx. $$</p>
+          </div>
+
+          <div class="method-box compact math-small fragment" data-fragment-index="1">
+            <p>Take the spatial Laplace transform</p>
+            <p class="eq">$$ \tmU(s)=\int_0^\infty\e^{-sa}\mU(a)\,da. $$</p>
+            <p>Reversing the order of integration and separating the regimes gives</p>
+            <p class="eq">$$ \boxed{\tmU(s)=\mA(s)\mB+\mA(s)\sum_{i=1}^m\mE_i\mQ\,\tmU(s/p_i).} $$</p>
+          </div>
+
+          <div class="callout small fragment" data-fragment-index="1">
+            The integral equation becomes a self-similar recursion in the Laplace variable.
+          </div>
+
+          <aside class="notes">
+            We have finished the detailed matrix manipulation in the spatial variable.
+            The unknown is now U of a, the inverse upward scale matrix.
+            Click 1.
+            Take the Laplace transform with respect to a.
+            In the integral term, reverse the order of integration.
+            The selector matrices E_i separate the different regime-dependent factors p_i.
+            The key point is the appearance of the rescaled arguments s over p_i.
+            The original integral equation has therefore become a self-similar functional equation.
+            From this point onward I will not show every intermediate matrix-algebra step.
+          </aside>
+        </section>
+
+        <!-- Upward scale matrix: solving the recursion -->
+        <section data-transition="none">
+          <h2>Upward scale matrix: solving the recursion &mdash;
+            <span class="math small">$\mZ(\U{x}{a}) = \E_x\!\big[\e^{-w\tau_{\up a}};\,J(\tau_{\up a})\big]$</span>
+          </h2>
+
+          <div class="definition-box compact hidden">
+            <p>Each iteration chooses a regime and rescales the Laplace argument by its factor $p_i$.</p>
+          </div>
+
+          <div class="method-box math-small">
+            <p>For a regime word $\alpha=(i_1,\ldots,i_n)$, define $\alpha\upord_k=(i_1,\ldots,i_k)$ and
+              $p_\alpha=\prod_{\ell=1}^{|\alpha|}p_{i_\ell}$.</p>
+            <p class="eq">$$
+              \mK_\alpha(s)=\mA(s)\mE_{i_1}\mQ\prod_{k=2}^{|\alpha|}\mA\!\left(s/p_{\alpha\upord_{k-1}}\right)\mE_{i_k}\mQ.
+              $$</p>
+          </div>
+
+          <div class="method-box math-small fragment" data-fragment-index="1">
+            <p>Summing over all possible regime words defines the spatial resolvent</p>
+            <p class="eq">$$ (\cR F)(s)=F(s)+\sum_{n\ge1}\sum_{|\alpha|=n}\mK_\alpha(s)F(s/p_\alpha). $$</p>
+          </div>
+
+          <div class="theorem-box math-small fragment" data-fragment-index="2">
+            <p class="eq">$$ \boxed{\tmU(s)=(\cR(\mA\mB))(s).} $$</p>
+          </div>
+
+          <div class="callout small fragment" data-fragment-index="2">
+            Scalar iteration index $n$ becomes a word of regimes $\alpha=(i_1,\ldots,i_n)$.
+          </div>
+
+          <aside class="notes">
+            The functional equation is solved by iteration.
+            Each iteration corresponds to choosing the regime encountered at the next jump.
+            After n iterations we therefore have a sequence i_1 through i_n, which we encode as the word alpha.
+            The product p_alpha records the cumulative spatial rescaling along that sequence.
+            The factors E_i Q record the corresponding regime transitions.
+            Click 1.
+            Summing over every word of every length defines the spatial resolvent R.
+            This is the matrix analogue of the scalar series that appears in the non-modulated AIMD model.
+            Click 2.
+            Applying this resolvent to the forcing term A B gives the solution.
+            For m equal to one, there is only one word of each length and the construction collapses back to the scalar
+            case.
+            The words are finite, but the notation is doing its best to look infinite.
+          </aside>
+        </section>
       </section>
 
+      <!-- Comparison with the scalar benchmark -->
       <section>
         <h2>Comparison with the scalar benchmark</h2>
 
@@ -546,155 +721,105 @@
           <div class="card compact">
             <span class="label">Scalar AIMD</span>
 
-            <p class="eq small">\[
-              Z^\up(w;x,a)
-              =\frac{Z^\up(w;0,a)}{Z^\up(w;0,x)}
-              \]</p>
+            <p class="eq small">$$ Z^\up(w;x,a)=\frac{Z^\up(w;0,a)}{Z^\up(w;0,x)} $$</p>
 
-            <p class="eq small">\[
-              Z^\up(w;0,x)=
-              \left(
-              \sum_{k=0}^{\infty}
-              \frac{(x/(w+\lambda))^k}
-              {k!\,{\color{blue}(\lambda/(w+\lambda);p)_k}}
-              \right)^{-1},
-              \qquad (c=1).
-              \]</p>
+            <p class="eq small">$$
+              Z^\up(w;0,x)=\left(\sum_{k=0}^{\infty}\frac{(x/(w+\lambda))^k}{k!\,{\color{blue}(\lambda/(w+\lambda);p)_k}}\right)^{-1},
+              \qquad (c=1). $$</p>
           </div>
 
           <div class="card compact">
             <span class="label">Markov-modulated AIMD</span>
 
-            <p>The scalar iteration index $k$ becomes a
-              <strong>regime word</strong> $\alpha=(i_1,\ldots,i_k)$.
-            </p>
+            <p>The scalar iteration index $k$ becomes a <strong>regime word</strong> $\alpha=(i_1,\ldots,i_k)$.</p>
 
             <p>The geometric factor $p^k$ becomes the path-dependent product
               $p_\alpha=\prod_{\ell=1}^{|\alpha|}p_{i_\ell}$.</p>
 
-            <p>The scalar $q$-series is replaced by the non-commutative
-              spatial resolvent $\cR$, with $\mE_i\mQ$ recording the regime
-              selected at each jump.</p>
+            <p>The scalar $q$-series is replaced by the non-commutative spatial resolvent $\cR$, with $\mE_i\mQ$
+              recording the regime selected at each jump.</p>
           </div>
         </div>
 
         <div class="callout small">
-          Thus
-          $k \longleftrightarrow \alpha$,
-          $p^k \longleftrightarrow p_\alpha$,
-          and the scalar $q$-series
-          $\longleftrightarrow$
-          the matrix word series.
+          Thus $k \longleftrightarrow \alpha$, $p^k \longleftrightarrow p_\alpha$, and the scalar $q$-series
+          $\longleftrightarrow$ the matrix word series.
         </div>
 
-        <p class="small muted">
-          For $m=1$ there is only one possible word of each length,
-          so the matrix construction reduces to the scalar formula.<br />
-          From $q$-calculus:
-          ${\color{blue}(x;q)_n}
-          =(1-x)(1-xq)\cdots(1-xq^{n-1})$.
+        <p class="small muted">For $m=1$ there is only one possible word of each length, so the matrix construction
+          reduces to the scalar formula.<br />From $q$-calculus: ${\color{blue}(x;q)_n}=(1-x)(1-xq)\cdots(1-xq^{n-1})$.
         </p>
 
         <aside class="notes">
-          The main correspondence is that a scalar iteration is indexed only by its length k,
-          whereas in the modulated model one must also remember the sequence of regimes visited.
-          Hence k is replaced by a word alpha, p^k by p_alpha, and the scalar q-series by the
-          non-commutative word resolvent. For m=1 there is exactly one word of each length, and
-          the construction reduces to the scalar case.
+          The main correspondence is that a scalar iteration is indexed only by its length k, whereas in the modulated
+          model one must also remember the sequence of regimes visited.
+          Hence k is replaced by a word alpha, p^k by p_alpha, and the scalar q-series by the non-commutative word
+          resolvent.
+          For m=1 there is exactly one word of each length, and the construction reduces to the scalar case.
         </aside>
       </section>
 
+      <!-- Downward one-sided exit (vertical slides) -->
       <section>
-
-        <!-- 1. First step -->
+        <!-- 1. Downward one-sided exit: first jump -->
         <section>
-          <h2>Downward one-sided exit: first jump</h2>
+          <h2>Downward one-sided exit: first jump
+            &mdash; <span class="math small">$\mZ(\D{x}{b})=\E_x\!\big[\e^{-w\tau_{\down b}};\,J(\tau_{\down
+              b})\big]$</span></h2>
 
-          <p>
-            For $x\le b$, $\mZ(\D{x}{b})=\mId$.
-            For $x>b$, downward passage can only occur at a jump.
-          </p>
+          <p>For $x\le b$, $\mZ(\D{x}{b})=\mId$. For $x>b$, downward passage can only occur at a jump.</p>
 
           <div class="theorem-box math-small">
             <p>Condition on the first jump, with $T_i\sim\Exp(\lambda_i)$:</p>
-            \[
-            \mZ(\D{x}{b})
-            =
-            \sum_{i=1}^m \mE_i
-            \int_0^\infty
-            \lambda_i\e^{-(w+\lambda_i)t}\,
-            \mQ\,
-            \mZ\!\left(\D{p_i(x+t/c_i)}{b}\right)\,dt .
-            \]
+            <p class="eq">$$
+              \mZ(\D{x}{b})=\sum_{i=1}^m\mE_i\int_0^\infty\lambda_i\e^{-(w+\lambda_i)t}\,\mQ\,\mZ\!\left(\D{p_i(x+t/c_i)}{b}\right)\,dt.
+              $$</p>
           </div>
 
-          <div class="method-box compact math-small fragment" data-fragment-index="1">
+          <div class="method-box compact math-small fragment hidden">
             <p>With $y=p_i(x+t/c_i)$,</p>
-            \[
-            \boxed{
-            \mZ(\D{x}{b})
-            =
-            \mDelta(\vecgamma)\mExp(x\vecz)
-            \int_0^\infty
-            \mDelta(y\ge x\vecp)\,
-            \mExp(-(\vecz/\vecp)y)\,
-            \mQ\,\mZ(\D{y}{b})\,dy .
-            }
-            \]
+            <p class="eq">$$ \boxed{\mZ(\D{x}{b})=\mDelta(\vecgamma)\mExp(x\vecz)\int_0^\infty\mDelta(y\ge
+              x\vecp)\,\mExp(-(\vecz/\vecp)y)\,\mQ\,\mZ(\D{y}{b})\,dy.} $$</p>
+          </div>
+
+          <div class="formula-swap method-box math-small fragment fade-in" data-fragment-index="1">
+            <p>Taking the spatial Laplace transform, exchanging the order of integration and evaluating the inner
+              integral gives:</p>
+            <p class="eq">$$ \widetilde{\mZ}_b(s)=\mA(s)\int_0^\infty\mDelta(y\ge\vecp
+              b)\Big[\mExp(-sy/\vecp)-\mExp\!\bigl(b(\vecz-s\mathbf1)-(\vecz/\vecp)y\bigr)\Big]\mQ\,\mZ(\D{y}{b})\,dy.
+              $$</p>
           </div>
 
           <aside class="notes">
-            Starting above b, the deterministic motion is upward, so the first downward
-            crossing cannot happen before the first jump.
-
-            In phase i, just before the jump the level is x+t/c_i; after the jump it is
-            p_i(x+t/c_i), and Q selects the new phase.
-
-            The change of variable y=p_i(x+t/c_i) produces gamma_i and puts the equation
-            in the same diagonal-matrix language used for the upward problem.
+            Starting above b, the deterministic motion is upward, so the first downward crossing cannot happen before
+            the first jump.
+            In phase i, just before the jump the level is x+t/c_i; after the jump it is p_i(x+t/c_i), and Q selects the
+            new phase.
+            The change of variable y=p_i(x+t/c_i) produces gamma_i and puts the equation in the same diagonal-matrix
+            language used for the upward problem.
           </aside>
         </section>
 
+        <!-- 2. Downward exit: transform and reverse -->
+        <section data-visibility="hidden">
+          <h2>Downward exit: transform and reverse
+            &mdash; <span class="math small">$\mZ(\D{x}{b})=\E_x\!\big[\e^{-w\tau_{\down b}};\,J(\tau_{\down
+              b})\big]$</span></h2>
 
-        <!-- 2. Transform, reverse, split -->
-        <section>
-          <h2>Downward exit: transform and reverse</h2>
-
-          <p>
-            Set
-            $\widetilde{\mZ}_b(s)=\int_b^\infty\e^{-sx}\mZ(\D{x}{b})\,dx$.
-          </p>
+          <p>Set $\widetilde{\mZ}_b(s)=\int_b^\infty\e^{-sx}\mZ(\D{x}{b})\,dx$.</p>
 
           <div class="formula-stage">
 
             <!-- Initial state: visible when entering, disappears at click 1 -->
             <div class="formula-swap theorem-box math-small fragment fade-out" data-fragment-index="1">
-
               <p>Transform the first-step equation:</p>
-
-              \[
-              \widetilde{\mZ}_b(s)
-              =
-              \mDelta(\vecgamma)
-              \int_b^\infty\!\!\int_0^\infty
-              \mDelta(y\ge x\vecp)\,
-              \mExp\!\left(
-              (\vecz-s\mathbf1)x-(\vecz/\vecp)y
-              \right)
-              \mQ\,\mZ(\D{y}{b})\,dy\,dx .
-              \]
-
+              <p class="eq">$$ \widetilde{\mZ}_b(s)=\mDelta(\vecgamma)\int_b^\infty\!\!\int_0^\infty\mDelta(y\ge
+                x\vecp)\,\mExp\!\left((\vecz-s\mathbf1)x-(\vecz/\vecp)y\right)\mQ\,\mZ(\D{y}{b})\,dy\,dx. $$</p>
             </div>
-
 
             <!-- Click 1: replaces previous formula and remains visible -->
             <div class="formula-swap method-box math-small fragment fade-in" data-fragment-index="1">
-
-              <p>
-                Reverse the region
-                $x\ge b,\;y\ge x\vecp$
-                componentwise:
-              </p>
+              <p>Reverse the region $x\ge b,\;y\ge x\vecp$ componentwise:</p>
 
               <div class="flow">
                 <div class="node">
@@ -708,306 +833,242 @@
                 </div>
               </div>
 
-              <p class="eq small">
-                \[
-                \widetilde{\mZ}_b(s)
-                =
-                \mA(s)\int_0^\infty
-                \mDelta(y\ge\vecp b)
-                \Big[
-                \mExp(-sy/\vecp)
-                -
-                \mExp\!\bigl(
-                b(\vecz-s\mathbf1)-(\vecz/\vecp)y
-                \bigr)
-                \Big]
-                \mQ\,\mZ(\D{y}{b})\,dy .
-                \]
-              </p>
-
+              <p class="eq small">$$ \widetilde{\mZ}_b(s)=\mA(s)\int_0^\infty\mDelta(y\ge\vecp
+                b)\Big[\mExp(-sy/\vecp)-\mExp\!\bigl(b(\vecz-s\mathbf1)-(\vecz/\vecp)y\bigr)\Big]\mQ\,\mZ(\D{y}{b})\,dy.
+                $$</p>
             </div>
-
 
             <!-- Click 2: appears below, while reversed formula stays -->
             <div class="formula-after fragment fade-in" data-fragment-index="2">
 
               <div class="cols down-split">
-
                 <div class="definition-box compact small">
                   <span class="label">Known strip</span>
-
-                  <p>
-                    For $p_i b\le y\lt b$,
-                    $\mZ(\D{y}{b})=\mId$.
-                  </p>
-
-                  <p class="small">
-                    This gives the explicit forcing $\mR_b(s)$.
-                  </p>
+                  <p>For $p_i b\le y\lt b$, $\mZ(\D{y}{b})=\mId$.</p>
+                  <p class="small">This gives the explicit forcing $\mR_b(s)$.</p>
                 </div>
 
                 <div class="definition-box compact small">
                   <span class="label">Unknown part: $y\ge b$</span>
-
                   <p>Evaluating the inner $x$-integral produces</p>
-
-                  \[
-                  \e^{-(s/p_i)y}
-                  \;\longrightarrow\;
-                  \widetilde{\mZ}_b(s/p_i),
-                  \]
-
-                  \[
-                  \e^{-(z_i/p_i)y}
-                  \;\longrightarrow\;
-                  \widetilde{\mZ}_b(z_i/p_i).
-                  \]
+                  <p class="eq">$$ \e^{-(s/p_i)y}\;\longrightarrow\;\widetilde{\mZ}_b(s/p_i), $$</p>
+                  <p class="eq">$$ \e^{-(z_i/p_i)y}\;\longrightarrow\;\widetilde{\mZ}_b(z_i/p_i). $$</p>
                 </div>
-
               </div>
 
               <div class="callout small">
-                $\widetilde{\mZ}_b(s/p_i)$ drives the spatial recursion;
-                the $m$ fixed values
+                $\widetilde{\mZ}_b(s/p_i)$ drives the spatial recursion; the $m$ fixed values
                 $\widetilde{\mZ}_b(z_i/p_i)$ are collected into $\mH_b$.
               </div>
-
             </div>
-
           </div>
 
           <aside class="notes">
             First click: only reverse the integration region.
-
-            In phase i, x greater than or equal to b and y greater than or equal
-            to p_i x becomes y greater than or equal to p_i b and
-            b less than or equal to x less than or equal to y/p_i.
-
+            In phase i, x greater than or equal to b and y greater than or equal to p_i x becomes y greater than or
+            equal to p_i b and b less than or equal to x less than or equal to y/p_i.
             Evaluating the x-integral produces two exponential factors.
             The first gives the recursive transform at s/p_i.
             The second gives the fixed special value at z_i/p_i.
-
-            Second click: split at y=b. Below b the transform is already the
-            identity, producing R_b. Above b remain the recursive transforms
-            and the m special values.
+            Second click: split at y=b.
+            Below b the transform is already the identity, producing R_b.
+            Above b remain the recursive transforms and the m special values.
           </aside>
         </section>
 
-
-        <!-- 3. Same recursion as upward -->
+        <!-- 3. Downward exit: the same spatial recursion -->
         <section>
-          <h2>Downward exit: the same spatial recursion</h2>
+          <h2>Downward exit: the same spatial recursion
+            &mdash; <span class="math small">$\mZ(\D{x}{b})=\E_x\!\big[\e^{-w\tau_{\down b}};\,J(\tau_{\down
+              b})\big]$</span></h2>
 
           <div class="cols">
             <div class="definition-box compact math-small">
               <span class="label">Known boundary forcing</span>
-              <p>$\mR_b(s)$ is the explicit contribution from $p_i b\le y \lt b$.</p>
+              <p>$\mR_b(s)$ is the explicit contribution from $p_i b\le y\lt b$.</p>
             </div>
 
             <div class="definition-box compact math-small">
               <span class="label">Finite-dimensional unknown</span>
-              \[\mH_b = -\sum_{i=1}^m \e^{z_i b}\mE_i\mQ\,
-              \widetilde{\mZ}_b(z_i/p_i). \]
+              <p class="eq">$$ \mH_b=-\sum_{i=1}^m\e^{z_i b}\mE_i\mQ\,\widetilde{\mZ}_b(z_i/p_i). $$</p>
             </div>
           </div>
 
           <div class="theorem-box compact math-small fragment" data-fragment-index="1">
             <p>With</p>
-            \[
-            \mF_b^{\mH_b}(s)
-            =
-            \mR_b(s)\mQ+\e^{-bs}\mH_b,
-            \]
-            <p>the transform equation becomes</p>
-            \[
-            \boxed{
-            \widetilde{\mZ}_b(s)
-            =
-            \mA(s)\mF_b^{\mH_b}(s)
-            +
-            \mA(s)\sum_{i=1}^m
-            \mE_i\mQ\,\widetilde{\mZ}_b(s/p_i).
-            }
-            \]
+            <p class="eq">$$ \mF_b^{\mH_b}(s)=\mR_b(s)\mQ+\e^{-bs}\mH_b, $$</p>
+            <p class="hidden">the transform equation becomes</p>
+            <p class="eq">$$
+              \boxed{\widetilde{\mZ}_b(s)=\mA(s)\mF_b^{\mH_b}(s)+\mA(s)\sum_{i=1}^m\mE_i\mQ\,\widetilde{\mZ}_b(s/p_i).}
+              $$</p>
           </div>
 
           <div class="method-box compact math-small fragment" data-fragment-index="2">
-            <p>
-              This is the <strong>same recursion as in the upward problem</strong>,
-              with a different forcing term. Hence
-            </p>
-            \[
-            \boxed{
-            \widetilde{\mZ}_b(s)
-            =
-            \bigl(\cR(\mA\mF_b^{\mH_b})\bigr)(s).
-            }
-            \]
+            <p>This is the <strong>same recursion as in the upward problem</strong>, with a different forcing term.
+              Hence</p>
+            <p class="eq">$$ \boxed{\widetilde{\mZ}_b(s)=\bigl(\cR(\mA\mF_b^{\mH_b})\bigr)(s).} $$</p>
           </div>
 
           <aside class="notes">
             This is the structural payoff.
-
-            Once H_b is regarded as given, everything depending on the spatial variable
-            has exactly the same recursion as before. So we do not solve another
-            infinite-dimensional problem: the same Green/resolvent operator R does it.
-
-            What remains is only to determine H_b consistently with its defining
-            special transform values.
+            Once H_b is regarded as given, everything depending on the spatial variable has exactly the same recursion
+            as before.
+            So we do not solve another infinite-dimensional problem: the same Green/resolvent operator R does it.
+            What remains is only to determine H_b consistently with its defining special transform values.
           </aside>
         </section>
 
-
         <!-- 4. Finite-dimensional closure -->
         <section>
-          <h2>Finite-dimensional closure: solving for $\mH_b$</h2>
+          <h2>Finite-dimensional closure: solving for $\mH_b$
+            &mdash; <span class="math small">$\mZ(\D{x}{b})=\E_x\!\big[\e^{-w\tau_{\down b}};\,J(\tau_{\down
+              b})\big]$</span></h2>
 
           <div class="definition-box compact math-small">
             <p>Separate the constant and linear dependence on $\mH_b$:</p>
-            \[
-            \mH_0(s)=\mA(s)\mR_b(s)\mQ,
-            \qquad
-            \mH_1(s)=\mA(s)\e^{-bs},
-            \]
-            \[
-            \boldsymbol{\Gamma}_b
-            =
-            \sum_{i=1}^m
-            \e^{z_i b}\mE_i\mQ
-            (\cR\mH_0)(z_i/p_i),
-            \qquad
-            \boldsymbol{\Pi}_b
-            =
-            \sum_{i=1}^m
-            \e^{z_i b}\mE_i\mQ
-            (\cR\mH_1)(z_i/p_i).
-            \]
+            <p class="eq">$$ \mH_0(s)=\mA(s)\mR_b(s)\mQ,\qquad \mH_1(s)=\mA(s)\e^{-bs}, $$</p>
+            <p class="eq">$$ \boldsymbol{\Gamma}_b=\sum_{i=1}^m\e^{z_i b}\mE_i\mQ(\cR\mH_0)(z_i/p_i),\qquad
+              \boldsymbol{\Pi}_b=\sum_{i=1}^m\e^{z_i b}\mE_i\mQ(\cR\mH_1)(z_i/p_i). $$</p>
           </div>
 
           <div class="theorem-box compact fragment" data-fragment-index="1">
             <p>The compatibility condition is now finite-dimensional:</p>
-            \[
-            (\mId+\boldsymbol{\Pi}_b)\mH_b
-            =
-            -\boldsymbol{\Gamma}_b.
-            \]
+            <p class="eq">$$ (\mId+\boldsymbol{\Pi}_b)\mH_b=-\boldsymbol{\Gamma}_b. $$</p>
           </div>
 
           <div class="method-box compact fragment" data-fragment-index="2">
             <p>If $\mId+\boldsymbol{\Pi}_b$ is nonsingular,</p>
-            \[ \boxed{ \mH_b = -(\mId+\boldsymbol{\Pi}_b)^{-1} \boldsymbol{\Gamma}_b. } \]
-          </div>
-
-          <div class="callout small fragment" data-fragment-index="2">
-            Infinite-dimensional recursion first; finite-dimensional closure last.
+            <p class="eq">$$ \boxed{\mH_b=-(\mId+\boldsymbol{\Pi}_b)^{-1}\boldsymbol{\Gamma}_b.} $$</p>
           </div>
 
           <aside class="notes">
-            By linearity of the resolvent, the map H -> C_b(H) is affine:
-            C_b(H)=-Gamma_b-Pi_b H.
-
-            Therefore the defining condition H_b=C_b(H_b) reduces to ordinary
-            matrix linear algebra.
-
-            At resonant special arguments one takes the finite limit in the original
-            transform identity before performing this affine splitting.
+            By linearity of the resolvent, the map H -> C_b(H) is affine: C_b(H)=-Gamma_b-Pi_b H.
+            Therefore the defining condition H_b=C_b(H_b) reduces to ordinary matrix linear algebra.
+            At resonant special arguments one takes the finite limit in the original transform identity before
+            performing this affine splitting.
           </aside>
         </section>
 
-
         <!-- Optional backup: explicit R_b -->
+        <!-- Boundary forcing -->
         <section data-visibility="hidden">
-          <h2>Boundary forcing $\mR_b(s)$</h2>
+          <h2>Boundary forcing $\mR_b(s)$
+            &mdash; <span class="math small">$\mZ(\D{x}{b})=\E_x\!\big[\e^{-w\tau_{\down b}};\,J(\tau_{\down
+              b})\big]$</span></h2>
 
           <div class="definition-box math-small">
-            <p>
-              The known strip $p_i b \le y \lt b$ gives $\mR_b(s)=\diag(R_i(s;b))$, where </p>
-            \[ R_i(s;b) = \frac{p_i}{s} \bigl(\e^{-sb}-\e^{-sb/p_i}\bigr) - \frac{p_i}{z_i}\e^{(z_i-s)b} \bigl(\e^{-z_i
-            b}-\e^{-z_i b/p_i}\bigr). \]
+            <p>The known strip $p_i b\le y\lt b$ gives $\mR_b(s)=\diag(R_i(s;b))$, where</p>
+            <p class="eq">$$
+              R_i(s;b)=\frac{p_i}{s}\bigl(\e^{-sb}-\e^{-sb/p_i}\bigr)-\frac{p_i}{z_i}\e^{(z_i-s)b}\bigl(\e^{-z_i
+              b}-\e^{-z_i b/p_i}\bigr). $$</p>
           </div>
 
           <aside class="notes">
             Use only if someone asks for the explicit forcing term.
           </aside>
         </section>
-
       </section>
 
+      <!-- Two-sided upward exit (vertical slides) -->
       <section>
+        <!-- Two-sided upward exit: build it strip by strip -->
         <section>
-          <h2>Two-sided upward exit:
-            <span class="math small">$\mZ(\UD{x}{a}{b}) =
-              \E_x\!\big[\e^{-w\tau_a^\up};\,\tau_a^\up\lt\tau_b^\down,\,J(\tau_a^\up)\big]$</span>
-          </h2>
-          <p>Let $\mZ(\UD{x}{a}{b})$ denote the transform of the upward exit time before downward exit. <br>
-            We use a constructive recursion to compute it.</p>
-          <div class="theorem-box math-small">
-            <p>Put $\bar p=\max_i p_i$. Assuming $\mZ(\UD{y}{a}{b})$ is known for $y \lt a$, define for $a\le x \lt
-              a/\bar
-              p$</p>
-            \[
-            P_{ij}(x)=\gamma_i\e^{z_i x}
-            \int_{p_i x}^{p_i a/\bar p}\sum_h q_{ih}\mZ_{hj}(w;\UD{y}{a}{b})
-            \e^{-(z_i/p_i)y}\,dy.
-            \]
-            <p>Then</p>
-            \[
-            \mZ(\UD{x}{a/\bar p}{b})=\mExp(-(a/\bar p-x)\vecz)
-            +\mP(x)\mZ(\UD{a}{a/\bar p}{b}),
-            \]
-            \[
-            \boxed{\;\mZ(\UD{a}{a/\bar p}{b})=(\mId-\mP(a))^{-1}
-            \mExp(-(a/\bar p-a)\vecz).\;}
-            \]
+          <h2>Two-sided upward exit: build it strip by strip</h2>
+
+          <div class="cols-60-40">
+            <div class="figure-card">
+              <img class="figure" src="assets/Layer_proof.svg"
+                alt="Recursive construction of the two-sided upward exit transform" />
+            </div>
+
+            <div class="compact">
+              <div class="definition-box compact">
+                <span class="label">Start</span>
+                <p>Compute the transform on a first strip where the exit mechanism is explicit.</p>
+              </div>
+
+              <div class="method-box compact">
+                <span class="label">Extend</span>
+                <p>With the transform is known below $a$.</p>
+                <p>On the next strip $a\le x\lt a/\bar p$, every jump lands below $a$:</p>
+                <p class="eq">$$ p_i x\lt a. $$</p>
+                <p>After the first jump, the continuation is therefore already known.</p>
+              </div>
+
+              <div class="callout small">
+                Repeat $a\mapsto a/\bar p$ to cover the whole state space.
+              </div>
+            </div>
           </div>
-          <p class="eq math-xsmall">Moreover $\lVert\mP(a)\rVert \lt 1$, so the inverse exists by the Neumann series.
-            Repeating $a\mapsto a / \bar p$ gives the full constructive continuation.</p>
+
           <aside class="notes">
-            This is the current-paper continuation theorem. The key point is that every jump before reaching
-            $a/\bar p$ lands below $a$, where the old two-sided transform is already known.
-            [Source] D'Auria and Palmowski, arXiv:2609.36269, Theorem 5.3.
+            The main idea is constructive.
+            We first compute the transform on a strip where the answer is explicit.
+            Then suppose that everything below a has already been computed.
+            Look at the next strip, from a to a over p bar.
+            If the process jumps anywhere in this strip, multiplication by p_i sends it back below a.
+            But below a the transform is already known.
+            Therefore the only new problem is to connect this strip to its new upper boundary.
+            Once the strip is computed, replace a by a over p bar and repeat.
+            The two-sided problem is therefore solved one strip at a time.
           </aside>
         </section>
 
-        <section data-visibility="hidden">
-          <h2>Two-sided upward exit &mdash; initial strip</h2>
-          <div class="theorem-box math-small">
-            <p>Let $\bar p=\max_i p_i$. If $b \lt 0$ and $b \lt a\le b/\bar p$, then for every $b \lt x \le a$,</p>
-            \[
-            \boxed{\;\mZ(\UD{x}{a}{b})=\mExp(-(a-x)\vecz).\;}
-            \]
-            <p>If $b=0$, then $\tau_0^\down=\infty$ a.s. from every positive starting level, so
-              $\mZ(\UD{x}{a}{0})=\mZ(\U{x}{a})$.</p>
+        <!-- Two-sided upward exit: seed and continuation -->
+        <section>
+          <h2>Two-sided upward exit: seed and continuation</h2>
+
+          <div class="cols">
+            <div class="definition-box compact math-small">
+              <span class="label">First strip</span>
+              <p>If $b\lt a\le b/\bar p$, the transform is explicit:</p>
+              <p class="eq">$$ \boxed{\mZ(\UD{x}{a}{b})=\mExp(-(a-x)\vecz).} $$</p>
+            </div>
+
+            <div class="method-box compact math-small">
+              <span class="label">Next strip</span>
+              <p>If the transform is known below $a$, then for $a\le x\lt a/\bar p$:</p>
+              <p class="eq hidden">$$ \mZ(\UD{x}{a/\bar p}{b})=\mExp(-(a/\bar p-x)\vecz)+\mP(x)\mZ(\UD{a}{a/\bar p}{b}). $$</p>
+              <p class="eq">$$ \boxed{\mZ(\UD{a}{a/\bar p}{b})=(\mId-\mP(a))^{-1}\mExp(-(a/\bar p-a)\vecz).} $$</p>
+            </div>
           </div>
-          <div class="proof-box math-xsmall">
-            <p><strong>Reason.</strong> Before reaching $a$, every jump from phase $i$ lands at or below
-              $p_i a\le\bar p a\le b$. Thus success is exactly the event of no jump during the deterministic climb
-              from $x$ to $a$. In phase $i$ this contributes
-              $\exp\{-c_i(\lambda_i+w)(a-x)\}=\exp\{-z_i(a-x)\}$.</p>
+
+          <div class="callout small">
+            First strip explicit; every subsequent strip uses the transform already computed below it.
           </div>
+
+          <p class="math-xsmall muted">Here $\bar p=\max_i p_i$ and $\mP(x)$ collects the known first-jump contribution,
+            with $$P_{ij}(x)=\gamma_i\e^{z_i x}\int_{p_i x}^{p_i a/\bar
+            p}\sum_hq_{ih}\mZ_{hj}(w;\UD{y}{a}{b})\e^{-(z_i/p_i)y}\,dy.$$</p>
+
           <aside class="notes">
-            This is the seed used in the current paper before iterating the upper continuation theorem.
-            [Source] D'Auria and Palmowski, arXiv:2609.36269, Proposition 5.1.
+            This is the result I want you to remember.
+            There are only two ingredients.
+            First, an explicit seed on the initial strip.
+            Second, a continuation step.
+            Assume that the transform is known below a.
+            On the next strip the first term is the contribution of reaching the new upper boundary without a jump.
+            If a jump occurs, the process lands below a, where the continuation is already known.
+            I collect that contribution in the matrix P of x.
+            Its explicit expression is written only for completeness.
+            Setting x equal to a gives a finite matrix equation, which we solve by inverting I minus P of a.
+            The whole new strip is then known.
+            Repeating the construction gives the transform at arbitrary levels.
           </aside>
         </section>
 
-        <section data-visibility="hidden">
-          <h2>Recursive upper continuation: first-step picture</h2>
-          <div class="figure-card">
-            <img class="figure" src="assets/Layer_proof.svg"
-              alt="First-step picture for recursive two-sided upper continuation" />
-          </div>
-        </section>
       </section>
 
+      <!-- Two-sided downward exit -->
       <section data-visibility="hidden">
         <h2>Two-sided downward exit:
           <span class="math small">$\mZ(\DU{x}{a}{b}) =
-            \E_x\!\big[\e^{-w\tau_b^\down};\,\tau_b^\down\lt\tau_a^\up,\,J(\tau_b^\down)\big]$</span>
+            \E_x\!\big[\e^{-w\tau_{\down b}};\,\tau_{\down b}\lt\tau_{\up a},\,J(\tau_{\down b})\big]$</span>
         </h2>
         <p>Define</p>
         <p class="eq small">\[
-          \mZ_{ij}(w;\DU{x}{a}{b})=\E_{x,i}\big[\e^{-w\tau_b^\down};\tau_b^\down\lt\tau_a^\up,\,J(\tau_b^\down)=j\big].
+          \mZ_{ij}(w;\DU{x}{a}{b})=\E_{x,i}\big[\e^{-w\tau_{\down b}};\tau_{\down b}\lt\tau_{\up a},\,J(\tau_{\down
+          b})=j\big].
           \]</p>
         <div class="theorem-box">
           <p class="eq">\[
@@ -1023,7 +1084,9 @@
         </aside>
       </section>
 
+      <!-- Reflection at the running minimum (vertical slides) -->
       <section>
+        <!-- Reflection at the running minimum -->
         <section>
           <h2>Reflection at the running minimum</h2>
           <div class="definition-box compact">
@@ -1047,6 +1110,7 @@
           </aside>
         </section>
 
+        <!-- Kella's martingale lineage -->
         <section>
           <h2>Kella's martingale lineage</h2>
           <div class="martingale-timeline">
@@ -1087,6 +1151,7 @@
           </aside>
         </section>
 
+        <!-- Optional Offer bridge before reflection -->
         <section data-visibility="hidden" class="story-slide">
           <h2>Optional Offer bridge before reflection</h2>
           <div class="definition-box compact">
@@ -1099,6 +1164,7 @@
           <aside class="notes">Optional, 30 seconds. Use it as a transition, not as a separate theorem.</aside>
         </section>
 
+        <!-- Restart equation at a strict minimum -->
         <section>
           <h2>Restart equation at a strict minimum</h2>
           <p>At a current minimum $v$, let</p>
@@ -1134,6 +1200,7 @@
                 </aside>
         </section>
 
+        <!-- Harmonic continuation between minimum updates -->
         <section>
           <h2>Harmonic continuation between minimum updates</h2>
           <div class="callout small">One Picard step is realized by a finite $\bar p$-geometric method of steps: split
@@ -1172,6 +1239,7 @@
               </aside>
         </section>
 
+        <!-- Doob martingale for the reflected passage -->
         <section>
           <h2>Doob martingale for the reflected passage</h2>
           <div class="theorem-box compact">
@@ -1210,6 +1278,7 @@
           </aside>
         </section>
 
+        <!-- Reflected first-passage transform -->
         <section class="reflected-result-slide">
           <h2>Reflected first-passage transform</h2>
           <div class="theorem-box compact math-small">
@@ -1245,6 +1314,7 @@
         </section>
       </section>
 
+      <!-- Take-home points -->
       <section>
         <h2>Take-home points</h2>
         <div class="three-cols">
@@ -1271,6 +1341,7 @@
         </aside>
       </section>
 
+      <!-- Optional closing line -->
       <section data-visibility="hidden" class="story-slide">
         <h2>Optional closing line</h2>
         <div class="callout">
@@ -1281,6 +1352,7 @@
         <aside class="notes">Optional, 15 seconds. Use only if the room has the right tone.</aside>
       </section>
 
+      <!-- Questions -->
       <section>
         <h2>Questions</h2>
         <div class="center" style="margin-top: 1.4em;">
@@ -1290,7 +1362,9 @@
         </div>
       </section>
 
+      <!-- Selected references (vertical slides) -->
       <section id="partial-resetting-bibliography">
+        <!-- Selected references -->
         <section>
           <h2 class="backup">Selected references</h2>
           <ul class="refs refs-primary">
@@ -1344,6 +1418,7 @@
           </div>
         </section>
 
+        <!-- Selected references (continued) -->
         <section>
           <h2 class="backup">Selected references</h2>
           <div class="refs-stack">

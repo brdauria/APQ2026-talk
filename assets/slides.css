@@ -100,8 +100,25 @@
   text-align: right;
 }
 
+.reveal .hidden {
+  display: none !important;
+}
+
 .reveal .nowrap {
   white-space: nowrap;
+}
+
+.reveal .matrix-step {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.65em;
+  width: 100%;
+  min-height: 430px;
+}
+
+.reveal .matrix-step > .theorem-box,
+.reveal .matrix-step > .method-box {
+  margin-top: 0;
 }
 
 .reveal .title-slide h1 {
@@ -255,8 +272,8 @@
 .reveal .unipd-title-slide .coauthor-portrait {
   position: absolute;
   z-index: 4;
-  top: 214px;
-  right: 112px;
+  top: 100px;
+  right: 75px;
   width: 178px;
   height: 178px;
   box-sizing: border-box;

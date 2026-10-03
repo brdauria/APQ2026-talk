@@ -2,6 +2,11 @@ if (new URLSearchParams(window.location.search).has("print-pdf")) {
   document.documentElement.classList.add("print-pdf-mode");
 }
 
+document.querySelectorAll(".fragment.hidden").forEach((el) => {
+  el.classList.remove("fragment");
+  el.removeAttribute("data-fragment-index");
+});
+
 Reveal.initialize({
   width: 1280,
   height: 720,
@@ -69,7 +74,9 @@ Reveal.initialize({
         vecv: "\\boldsymbol{v}",
         vecz: "\\boldsymbol{z}",
         vecgamma: "\\boldsymbol{\\gamma}",
-        Exp: "\\operatorname{Exp}"
+        Exp: "\\operatorname{Exp}",
+        mred: ["{\\color{red}{#1}}", 1],
+        mgreen: ["{\\color{green}{#1}}", 1]
       }
     },
     options: {
